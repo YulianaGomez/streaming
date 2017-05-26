@@ -4,30 +4,33 @@ import os
 import time
 import sys
 import glob
+import ntpath
 
 while True:
 
-    files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
-    path = '/home/parallels/globus-sdk-python/globusnram/test_files/'
+    files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+    path = '/home/parallels/stream_transfer/test_files'
     for filename in files:
         #filename = 'personnel.db'
-        destfile = filename
+        destfilename = ntpath.basename(filename)
+        destfile = '/home/parallels/stream_transfer/destination/' + destfilename
 
         if os.path.isfile(destfile):
             os.remove(destfile)
-            time.sleep(2)
+            #time.sleep(2)
 
         context = zmq.Context()
         subscriber = context.socket(zmq.SUB)
-        subscriber.connect("tcp://127.0.0.1:2002")
+        subscriber.connect("tcp://127.0.0.1:10111")
         subscriber.setsockopt(zmq.SUBSCRIBE,'')
 
-        msg = subscriber.recv(313344)
-        if msg:
-            f = open(destfile, 'wb')
-            print 'open'
-            f.write(msg)
-            print 'close\n'
-            f.close()
+        #msg = subscriber.recv(313344)
+        msg = subscriber.recv()
+        #if msg:
+        f = open(destfile, 'wb')
+        print 'open'
+        f.write(msg)
+        print 'close\n'
+        f.close()
 
         time.sleep(5)
