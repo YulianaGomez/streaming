@@ -1,0 +1,32 @@
+import zmq
+import time
+import os
+import sys
+import glob
+
+while True:
+
+    #print 'loop'
+    #msg = 'C:\TEMP\personnel.db'
+
+    # Prepare context & publisher
+    context = zmq.Context()
+    publisher = context.socket(zmq.PUB)
+    publisher.bind("tcp://*:2002")
+    time.sleep(1)
+
+    files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
+    #curFile = 'C:/TEMP/personnel.db'
+    for curFile in files:
+        size = os.stat(curFile).st_size
+        print 'File size:',size
+
+        target = open(curFile, 'rb')
+        file = target.read(size)
+        #if file:
+        publisher.send(file)
+
+        publisher.close()
+        context.term()
+        target.close()
+        time.sleep(10)
