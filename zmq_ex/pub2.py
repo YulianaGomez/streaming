@@ -12,14 +12,14 @@ while True:
     # Prepare context & publisher
     context = zmq.Context()
     publisher = context.socket(zmq.PUB)
-    publisher.bind("tcp://*:2002")
+    publisher.bind("tcp://*:10111")
     time.sleep(1)
 
-    files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
+    files = glob.glob('/home/parallels/stream_transfer/test_files/*')
     #curFile = 'C:/TEMP/personnel.db'
     for curFile in files:
         size = os.stat(curFile).st_size
-        print 'File size:',size
+        #print 'File size:',size
 
         target = open(curFile, 'rb')
         file = target.read(size)
