@@ -6,6 +6,7 @@ import sys
 import glob
 import ntpath
 
+###not working version???
 while True:
 
     files = glob.glob('/home/parallels/stream_transfer/test_files/*')

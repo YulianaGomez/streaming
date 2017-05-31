@@ -4,8 +4,9 @@ import os
 import sys
 import glob
 
-####WORKING VERSION - can transfer streaming data, will no delete data from
-####source after transfer
+"""WORKING VERSION - correct version of pub4 s
+has correct placement of context and terminations"""
+
 ##def main():
 context = zmq.Context()
 publisher = context.socket(zmq.PUB)

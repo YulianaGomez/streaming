@@ -6,7 +6,7 @@ import sys
 import glob
 import ntpath
 
-
+####SIMPLE WORKING VERSION - can accept one file from pub1########
 #def main():
 while True:
 #/home/parallels/stream_transfer/test_files/test1.txt

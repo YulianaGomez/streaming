@@ -4,6 +4,7 @@ import os
 import sys
 import glob
 
+###SIMPLE WORKING DATA TRANSFER- transfers specific file
 ##def main():
 while True:
 
