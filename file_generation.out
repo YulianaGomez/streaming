@@ -1,0 +1,1000 @@
+ 1094  ls
+ 1095  ls test_files/
+ 1096  cp update3.txt test_files/.
+ 1097  ls test_files/
+ 1098  ls
+ 1099  vi update2.py 
+ 1100  gedit update3.
+ 1101  gedit update3.py 
+ 1102  python update3.py 
+ 1103  gedit update3.py 
+ 1104  python update3.py 
+ 1105  gedit update3.py 
+ 1106  python update3.py 
+ 1107  gedit update3.py 
+ 1108  python update3.py 
+ 1109  gedit update3.py 
+ 1110  python update3.py 
+ 1111  gedit update3.py 
+ 1112  python update3.py 
+ 1113  gedit update3.py 
+ 1114  python update3.py 
+ 1115  gedit update3.py 
+ 1116  python update3.py 
+ 1117  gedit update3.py 
+ 1118  python update3.py 
+ 1119  vi update3.py 
+ 1120  gedit update3.
+ 1121  gedit update3.py 
+ 1122  python update3.py 
+ 1123  gedit update3.py 
+ 1124  python update3.py 
+ 1125  gedit update3.py &
+ 1126  python update3.py 
+ 1127  which python
+ 1128  python -V
+ 1129  which python
+ 1130  python update3.py 
+ 1131  sudo pip install pathlib
+ 1132  python update3.py 
+ 1133  ls
+ 1134  cp update3.py ~/Desktop/.
+ 1135  python update3.py 
+ 1136  ls
+ 1137  ls test_files/
+ 1138  ls
+ 1139  ls test_files/
+ 1140  cd test_files/
+ 1141  ls
+ 1142  pwd
+ 1143  ls
+ 1144  cd ../
+ 1145  ls
+ 1146  python udpate3.py
+ 1147  python update3.py
+ 1148  vi update3.py
+ 1149  cd ~/globus-sdk-python/globusnram
+ 1150  ls
+ 1151  ls destination/
+ 1152  rm *.*
+ 1153  ls destination/
+ 1154  ls
+ 1155  ls
+ 1156  cd globus-sdk-python/
+ 1157  ls
+ 1158  cd globusnram/
+ 1159  ls
+ 1160  python sub.py 
+ 1161  ls destination/
+ 1162  python sub.py 
+ 1163  cd zmq_ex/
+ 1164  python sub2.py 
+ 1165  ls
+ 1166  cd ../
+ 1167  ls
+ 1168  ls -ltr
+ 1169  ls -a
+ 1170  vi .always_on.py
+ 1171  vi .always_on.py.swp
+ 1172  vi .always_check.py.swp
+ 1173  ls
+ 1174  cd other_files/
+ 1175  ls
+ 1176  cd ../
+ 1177  ls
+ 1178  cd test_files/
+ 1179  ls
+ 1180  cd ../
+ 1181  ls
+ 1182  cd o
+ 1183  cd old/
+ 1184  ls
+ 1185  cd ../
+ 1186  lsd
+ 1187  ls
+ 1188  $ git remote add origin https://github.com/yulianagomez/streaming
+ 1189  git init
+ 1190  git add .
+ 1191  git commit -m "current working version of file sharing"
+ 1192  git config --global user.email "yzamora215@gmail.com"
+ 1193  git config --global user.name "yulianagomez"
+ 1194  git commit -m "current working version of file sharing"
+ 1195  git remote add origin https://github.com/YulianaGomez
+ 1196  git remote -v
+ 1197  git push -u origin master
+ 1198  git remote add origin https://github.com/YulianaGomez
+ 1199  git push
+ 1200  git push --setupstream origin master
+ 1201  git push --set-upstream origin master
+ 1202  git push
+ 1203  git config --global push.default matching
+ 1204  git config --global push.default simpe
+ 1205  git config --global push.default simple
+ 1206  git push --set-upstream origin master
+ 1207  history
+ 1208  git push --set-upstream origin master
+ 1209  ssh-keygen rsa -b 4096 -c "yzamora215@gmail.com"
+ 1210  ssh-keygen -t rsa -b 4096 -c "yzamora215@gmail.com"
+ 1211  ssh-keygen -t rsa -b 4096 -C "yzamora215@gmail.com"
+ 1212  eval "$(ssh-agent -s)"
+ 1213  ssh-add ~/.ssh/id_rsa
+ 1214  sudo apt-get install xclip
+ 1215  xclip -sel clip < ~/.ssh/id_rsa.pub 
+ 1216  git push --set-upstream origin master
+ 1217  git init
+ 1218  git add .
+ 1219  git commit -m "current working version, no stream, no constant trasnfering"
+ 1220  git remote add origin https://github.com/YulianaGomez
+ 1221  git remot -v
+ 1222  git remote -v
+ 1223  git push origin master
+ 1224  git remote set-url origin https://github.com/YulianaGomez
+ 1225  history
+ 1226  ssh-keygen rsa -t rsa -b 4096 -C "ygomez297@gmail.com"
+ 1227  ssh-keygen -t rsa -b 4096 -C "ygomez297@gmail.com"
+ 1228  eval "$(ssh-agent -s)"
+ 1229  ssh-add ~/.ssh/id_rsa
+ 1230  xclip -sel clip < ~/.ssh/id_rsa.pub
+ 1231  git push origin master
+ 1232  history
+ 1233  git remote add origin https://github.com/YulianaGomez
+ 1234  git push -u origin master
+ 1235  git remote -v
+ 1236  git push
+ 1237  git push --set-upstream origin master
+ 1238  git remote set-url origin https://github.com/YulianaGomez
+ 1239  git push
+ 1240  git push --set-upstream origin master
+ 1241  git remote rm origin
+ 1242  git remote add origin https://github.com/YulianaGomez
+ 1243  git push --set-upstream origin master
+ 1244  git init 
+ 1245  git add .
+ 1246  git commit -m "current working, no stream, not constant transferring"
+ 1247  git push
+ 1248  git push --set-upstream origin master
+ 1249  git config --local user.email ygomez297@gmail.com
+ 1250  git push
+ 1251  git push --set-upstream origin master
+ 1252  history
+ 1253  git remote add origin git push --set-upstream origin master
+ 1254  git remote add origin https://github.com/YulianaGomez
+ 1255  cd ../
+ 1256  ls
+ 1257  git init
+ 1258  git add .
+ 1259  git commit -m "beginning repo, no streaming, no constant sharing"
+ 1260  git remote add origin https://github.com/YulianaGomez/streaming
+ 1261  git remote add origin https://github.com/YulianaGomez/streaming1
+ 1262  git remote -v
+ 1263  git remote rm destination 
+ 1264  git remote 0v
+ 1265  git remote -v
+ 1266  git remote add origin https://github.com/YulianaGomez/streaming.git
+ 1267  git push - u origin master
+ 1268  git push -u origin master
+ 1269  cd ../
+ 1270  ls
+ 1271  cp globus-sdk-python streaming
+ 1272  ls
+ 1273  mkdir streaming
+ 1274  cp globus-sdk-pythoni/* streaming/.
+ 1275  cp globus-sdk-python/* streaming/.
+ 1276  ls
+ 1277  cd stream
+ 1278  cd streaming
+ 1279  ls
+ 1280  cd ../
+ 1281  rm -rf streaming
+ 1282  sudo cp -R globus-sdk-python streaming
+ 1283  cd stream
+ 1284  cd streaming/
+ 1285  ls
+ 1286  git init 
+ 1287  git remote -v
+ 1288  ls -la ~/.gitconfig 
+ 1289  sudo chown yulianagomez:yulianagomez ~/.gitconfig
+ 1290  cat ~/.gitconfig 
+ 1291  git config --local user.email ygomez297@gmail.com
+ 1292  sudo chown parallels -R .git
+ 1293  git config --local user.email ygomez297@gmail.com
+ 1294  cat ~/.gitconfig 
+ 1295  git config --global user.email "ygomez297@gmail.com
+ 1296  git config --global user.email "ygomez297@gmail.com"
+ 1297  cat ~/.gitconfig 
+ 1298  git init
+ 1299  cd ../
+ 1300  ls
+ 1301  cd globus-sdk-python/
+ 1302  git push
+ 1303  ls
+ 1304  git remote add other https://github.com/YulianaGomez/streaming.git
+ 1305  git checkout -b streaming streaming
+ 1306  ls
+ 1307  cd globus-sdk-python/
+ 1308  ls
+ 1309  cd globusnram/
+ 1310  ls
+ 1311  cd destination/
+ 1312  ls
+ 1313  cd ../
+ 1314  ls
+ 1315  vi stream.sh 
+ 1316  ./stream.sh 
+ 1317  ls test_files/
+ 1318  ls
+ 1319  cd pyzmq/
+ 1320  ls
+ 1321  cd examples/
+ 1322  ls
+ 1323  cd chat/
+ 1324  ls
+ 1325  cd
+ 1326  ls
+ 1327  cd Desktop/
+ 1328  ls
+ 1329  cd../Do
+ 1330  cd ../Downloads/
+ 1331  ls
+ 1332  tar -zxvf pycharm-community-2017.1.3.tar.gz 
+ 1333  ls
+ 1334  mv pycharm-community-2017.1.3 ~/bin/.
+ 1335  pwd
+ 1336  cd
+ 1337  mkdir bin
+ 1338  mv /home/parallels/Downloads
+ 1339  mv /home/parallels/Downloads/pycharm-community-2017.1.3 bin/.
+ 1340  cd bin/
+ 1341  ls
+ 1342  cd pycharm-community-2017.1.3/
+ 1343  ls
+ 1344  cd ../
+ 1345  mv bin/pycharm-community-2017.1.3/ .
+ 1346  ls
+ 1347  rm -rf bin
+ 1348  cd pycharm-community-2017.1.3/bin/
+ 1349  ls
+ 1350  ./pycharm.sh 
+ 1351  cd ../
+ 1352  ls
+ 1353  cd ../
+ 1354  ;s
+ 1355  ls
+ 1356  rm -rf pycharm-community-2017.1.3/
+ 1357  ls
+ 1358  cd atom-1.17.1-amd64/
+ 1359  ls
+ 1360  sudo dpkg --install atom-amd64.deb
+ 1361  ls
+ 1362  sudo apt-get dpkg
+ 1363  sudo apt-get clean
+ 1364  sudo apt-get update && sudo apt-get upgrade
+ 1365  sudo dpkg --install atom-amd64.deb
+ 1366  sudo dpkg --configure -a
+ 1367  sudo apt-get -f install
+ 1368  sudo dpkg --install atom-amd64.deb
+ 1369  sudo add-apt-repository ppa:webupd8team/atom
+ 1370  sudo apt update; sudo apt install atom
+ 1371  atom
+ 1372  cd
+ 1373  ls
+ 1374  cd pyzmq/
+ 1375  ls
+ 1376  cd examples/
+ 1377  ls
+ 1378  cd heartbeat/
+ 1379  ls
+ 1380  heart.py open
+ 1381  ls
+ 1382  cd ../
+ 1383  ls
+ 1384  cd chat/
+ 1385  ls
+ 1386  atom prompt2.py 
+ 1387  vi prompt2.py 
+ 1388  cd ../
+ 1389  cd chat/
+ 1390  pwd
+ 1391  cd ../
+ 1392  ls
+ 1393  cd ../
+ 1394  cd
+ 1395  ls
+ 1396  cd globus-sdk-python/
+ 1397  ls
+ 1398  cd globusnram/
+ 1399  cp -rf /home/parallels/pyzmq/examples/chat .
+ 1400  ls
+ 1401  mv transfer_file.py other_fiiles/.
+ 1402  mv update2.py other_fiiles/.
+ 1403  ls
+ 1404  mv *.txt other_fiiles/.
+ 1405  cd other_fiiles/
+ 1406  ls
+ 1407  mv *.py ../old/.
+ 1408  ls
+ 1409  cd ../
+ 1410  ls
+ 1411  mv other_fiiles other_files
+ 1412  ls
+ 1413  atom
+ 1414  ls
+ 1415  atom chat
+ 1416  cp update3.py update_zmq.py
+ 1417  atom update_zmq.py 
+ 1418  cd
+ 1419  ls
+ 1420  cd pyzmq/
+ 1421  ls
+ 1422  cd examples/
+ 1423  ls
+ 1424  cd logger/
+ 1425  ls
+ 1426  cd ../
+ 1427  ls
+ 1428  vi README_PY3K 
+ 1429  vi pubsub/
+ 1430  cd p
+ 1431  cd pubsub/
+ 1432  ls
+ 1433  vi topics_pub.py 
+ 1434  vi publisher.py 
+ 1435  cd 
+ 1436  ls
+ 1437  cd globus-sdk-python/
+ 1438  ls
+ 1439  cd globusnram/
+ 1440  ls
+ 1441  vi publisher.py
+ 1442  atom publisher.py
+ 1443  vi sub.py
+ 1444  atom sub.pu
+ 1445  pwd
+ 1446  ls
+ 1447  cd test_files/
+ 1448  ls
+ 1449  pwd
+ 1450  ls
+ 1451  cd ../destination/
+ 1452  ls
+ 1453  cd ../test_files/
+ 1454  ls
+ 1455  vi new_test.txt
+ 1456  cd ../
+ 1457  ls
+ 1458  cd chat
+ 1459  ls
+ 1460  vi prompt2.py 
+ 1461  cd ../
+ 1462  ls
+ 1463  python publisher.py 
+ 1464  ls
+ 1465  cd test_files/
+ 1466  ls
+ 1467  python publisher.py 
+ 1468  cd ../
+ 1469  python publisher.py 
+ 1470  vi getfilename.py
+ 1471  ls
+ 1472  cd test_files/
+ 1473  pwd
+ 1474  cd ../
+ 1475  ls
+ 1476  vi getfilename.py 
+ 1477  python getfilename.py 
+ 1478  vi getfilename.py 
+ 1479  python getfilename.py 
+ 1480  vi getfilename.py 
+ 1481  python getfilename.py 
+ 1482  vi getfilename.py 
+ 1483  python getfilename.py 
+ 1484  vi getfilename.py 
+ 1485  python getfilename.py 
+ 1486  vi getfilename.py 
+ 1487  python getfilename.py 
+ 1488  vi getfilename.py 
+ 1489  python getfilename.py 
+ 1490  vi getfilename.py 
+ 1491  python getfilename.py 
+ 1492  vi getfilename.py 
+ 1493  cd test_files/
+ 1494  pwd
+ 1495  atom 
+ 1496  ls
+ 1497  cd ../
+ 1498  ls
+ 1499  python getfilename.py 
+ 1500  vi test_files/new_test.txt 
+ 1501  python getfilename.py 
+ 1502  cd test_files/
+ 1503  pwd
+ 1504  python getfilename.py 
+ 1505  cd ../
+ 1506  python getfilename.py 
+ 1507  ls
+ 1508  history
+ 1509  python publisher.py 
+ 1510  ls
+ 1511  cd test_files/
+ 1512  ls
+ 1513  python publisher.py
+ 1514  cd ../
+ 1515  python publisher.py 
+ 1516  pwd
+ 1517  python publisher.py 
+ 1518  ls destination/
+ 1519  ls
+ 1520  ls destination/
+ 1521  python publisher.py 
+ 1522  l
+ 1523  ls test_files/
+ 1524  ls destination/
+ 1525  python publisher.py 
+ 1526  ls
+ 1527  mkdir zmq_ex
+ 1528  cd zmq_ex/
+ 1529  vi pub2.py
+ 1530  vi sub2.py
+ 1531  python pub2.py 
+ 1532  cd ../test_files/
+ 1533  ls
+ 1534  rm *.*
+ 1535  ls
+ 1536  cd ../
+ 1537  ls
+ 1538  cp other_files/update3.txt test_files/.
+ 1539  cd zmq_ex/
+ 1540  python pub2.py 
+ 1541  ls
+ 1542  mkdir stream_transfer
+ 1543  mv gen_data_in_files.py stream_transfer/.
+ 1544  cp -r globus-sdk-python/globusnram/old stream_transfer/.
+ 1545  cp -r globus-sdk-python/globusnram/other_files stream_transfer/.
+ 1546  cp -r globus-sdk-python/globusnram/test_files stream_transfer/.
+ 1547  cp -r globus-sdk-python/globusnram/zmq_ex stream_transfer/.
+ 1548  cp -r globus-sdk-python/globusnram/destination stream_transfer/.
+ 1549  cp -r globus-sdk-python/globusnram/old stream_transfer/.
+ 1550  cp -r globus-sdk-python/globusnram/chat stream_transfer/.
+ 1551  ls
+ 1552  cd stream
+ 1553  cd stream_transfer/
+ 1554  ls
+ 1555  ls ../
+ 1556  ls ../globus-sdk-python/globusnram/
+ 1557  ls
+ 1558  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./test file
+ 1559  pip install h5py
+ 1560  sudo pip install h5py
+ 1561  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./test file
+ 1562  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./testfile
+ 1563  vi test_files/
+ 1564  cd test_files/
+ 1565  ls
+ 1566  cd ../
+ 1567  ls
+ 1568  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./testfile
+ 1569  vi gen_data_in_files.py 
+ 1570  ls test_files/
+ 1571  ls
+ 1572  mkdir testfile
+ 1573  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./testfile
+ 1574  vi testfile/
+ 1575  cd testfile/
+ 1576  ls
+ 1577  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./ file
+ 1578  cd ../
+ 1579  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./ file
+ 1580  ls
+ 1581  rm *.h5
+ 1582  ls
+ 1583  git remote -v
+ 1584  git init 
+ 1585  git add README.md
+ 1586  git commit -m "current version with streaming h5 data, no open channel data transfer"
+ 1587  git remote add origin https://github.com/YulianaGomez/streaming.git
+ 1588  git push -u orign master
+ 1589  git push -u origin master
+ 1590  git remote add origin https://github.com/YulianaGomez/streaming.git
+ 1591  git push -u origin master
+ 1592  git add .
+ 1593  git remote -v
+ 1594  git push -u origin master
+ 1595  git clone ssh https://github.com/YulianaGomez/streaming.git
+ 1596  git clone https://github.com/YulianaGomez/streaming.git
+ 1597  git push -u origin master
+ 1598  git add .
+ 1599  git commit -m "current version with streaming h5 data, no open channel data transfer"
+ 1600  git push -u origin master
+ 1601  ls
+ 1602  git branch
+ 1603  cd zmq_ex/
+ 1604  ls
+ 1605  history
+ 1606  ls
+ 1607  atom 
+ 1608  python sub2.py 
+ 1609  chmod 775 ~/stream_transfer
+ 1610  vi he.txt
+ 1611  python pub2.py 
+ 1612  ls ../destination/
+ 1613  ls
+ 1614  python pub2.py 
+ 1615  ls
+ 1616  git status
+ 1617  cd ../
+ 1618  git status
+ 1619  ls
+ 1620  cd zmq_ex/
+ 1621  ls
+ 1622  python pub2.py 
+ 1623  netstat -a -b
+ 1624  ls
+ 1625  cd streaming
+ 1626  ls
+ 1627  cd globus_sdk/
+ 1628  ls
+ 1629  pwd
+ 1630  ls
+ 1631  cd ../
+ 1632  ls
+ 1633  cd globusnram/
+ 1634  ls
+ 1635  pwd
+ 1636  ls
+ 1637  cd zmq_ex/
+ 1638  python pub2.py 
+ 1639  ls
+ 1640  cd ../
+ 1641  ls
+ 1642  vi test1.txt
+ 1643  chmod 775 ~/streaming/globusnram/
+ 1644  cd ../
+ 1645  chmod -R a+x streaming
+ 1646  chmod -R a+X streaming
+ 1647  ls
+ 1648  ls -ltr
+ 1649  cd streaming
+ 1650  ls
+ 1651  cd ../stream_transfer
+ 1652  ls
+ 1653  vi test1.txt
+ 1654  ls
+ 1655  vi publisher.py
+ 1656  atom
+ 1657  ls
+ 1658  cd zmq_ex/
+ 1659  vi pub2.py 
+ 1660  cd ../
+ 1661  ls
+ 1662  vi publisher.py 
+ 1663  git add publisher.py 
+ 1664  git commit -m "Added constant transferring script, from ubuntu laptop to globus"
+ 1665  git push
+ 1666  git status
+ 1667  vi .git/config 
+ 1668  cd ../
+ 1669  ls
+ 1670  cd streamer
+ 1671  ls
+ 1672  cd ../
+ 1673  ls streaming
+ 1674  cd globus-sdk-python/
+ 1675  ls
+ 1676  cd globusnram/
+ 1677  ls
+ 1678  cd ../
+ 1679  cd
+ 1680  ls
+ 1681  cd streaming
+ 1682  ls
+ 1683  cd globusnram/
+ 1684  ls
+ 1685  cd ,,.
+ 1686  cd
+ 1687  ls globus-sdk-python/globusnram/
+ 1688  vi streaming/transfer_file.py 
+ 1689  cd ../
+ 1690  cd
+ 1691  ls
+ 1692  mv streaming old_stream
+ 1693  ls
+ 1694  cd stream_transfer/
+ 1695  atom
+ 1696  ls
+ 1697  pwd
+ 1698  atom
+ 1699  ls
+ 1700  atom zmq_ex
+ 1701  atom stream_transfer
+ 1702  cd test_files/
+ 1703  pwd
+ 1704  cd ../
+ 1705  ls
+ 1706  cd zmq_ex/
+ 1707  python sub2.py 
+ 1708  cd ../
+ 1709  ls
+ 1710  cd destination/
+ 1711  ls
+ 1712  pwed
+ 1713  pwd
+ 1714  cd ../zmq_ex/
+ 1715  ls
+ 1716  python sub2.py 
+ 1717  cd ../destination
+ 1718  pwd
+ 1719  python sub2.py 
+ 1720  cd ./.
+ 1721  cd ../
+ 1722  python sub2.py 
+ 1723  ls
+ 1724  cd zmq_ex/
+ 1725  python sub2.py 
+ 1726  git add sub2.py 
+ 1727  git commit -m "customized options and msgs for specific problem"
+ 1728  git push
+ 1729  git add pub2.py 
+ 1730  git commit -m "not working version, still needs to be able to share"
+ 1731  git push
+ 1732  python sub2.py 
+ 1733  cd /home/parallels/streaming/globusnram/test_files/
+ 1734  ls
+ 1735  vi update3.txt
+ 1736  cd ../
+ 1737  vi update3.txt
+ 1738  ls
+ 1739  vi hello.txt
+ 1740  ls
+ 1741  cd ../
+ 1742  vi he.txt
+ 1743  cd globusnram/zmq_ex/
+ 1744  ls
+ 1745  python sub2.py 
+ 1746  cd ../../../stream_transfer/
+ 1747  cd zmq_ex/
+ 1748  ls
+ 1749  atom
+ 1750  cd ../
+ 1751  cd test_files/
+ 1752  pwd
+ 1753  ls
+ 1754  cd ../
+ 1755  ls
+ 1756  cd zmq_ex/
+ 1757  ls
+ 1758  python pub2.py 
+ 1759  clear
+ 1760  python pub2.py 
+ 1761  atom
+ 1762  cd ../
+ 1763  ls
+ 1764  cp test1.txt test_files/.
+ 1765  cp test1.txt test2.txt
+ 1766  cp test2.txt test_files/,
+ 1767  cp test2.txt test_files/,.
+ 1768  cp test2.txt test_files/.
+ 1769  ls test_files/
+ 1770  rm ,
+ 1771  ls
+ 1772  cd destination/
+ 1773  ls
+ 1774  cd ~/stream_transfer/zmq_ex
+ 1775  python pub2.py 
+ 1776  cd stream_transfer/
+ 1777  ls
+ 1778  cd zmq_ex/
+ 1779  ls
+ 1780  python sub2.py 
+ 1781  ls
+ 1782  cd stream_transfer/
+ 1783  ls
+ 1784  cd streaming/
+ 1785  ls
+ 1786  cd ./
+ 1787  cd ../
+ 1788  ls
+ 1789  cd zmq_ex/
+ 1790  l
+ 1791  ls
+ 1792  atom 
+ 1793  ipconfig
+ 1794  netstat -ap tcp | grep -i "listen"
+ 1795  sudo lsof -PiTCP -sTCP:LISTEN
+ 1796  ls
+ 1797  python sub2.py 
+ 1798  ls
+ 1799  cd ../
+ 1800  ls
+ 1801  cd destination/
+ 1802  ls
+ 1803  cd ../
+ 1804  cd zmq_ex/
+ 1805  ls
+ 1806  python sub2.py 
+ 1807  ls
+ 1808  cp pub2.py pub1.py
+ 1809  cp sub2.py sub1.py
+ 1810  ls
+ 1811  git add pub1.py sub1.py
+ 1812  git commit -m "Working scripts that send one file using zeromq"
+ 1813  git push
+ 1814  python sub2.py 
+ 1815  ls
+ 1816  cd ../
+ 1817  ls
+ 1818  mv destination/*.* .
+ 1819  ls
+ 1820  ls destination/
+ 1821  cd destination/
+ 1822  ls
+ 1823  cd ../
+ 1824  cd testfile/
+ 1825  ls
+ 1826  rm -rf testfile
+ 1827  cp test1.txt test_file/.
+ 1828  ls
+ 1829  cd ../
+ 1830  cp test1.txt test_file/.
+ 1831  ls
+ 1832  cd testfile/
+ 1833  ls
+ 1834  cd ../
+ 1835  rm -rf testfile
+ 1836  ls
+ 1837  cp test1.txt test_files/.
+ 1838  cp test2.txt test_files/.
+ 1839  vi gen_data_in_files.py 
+ 1840  cd zmq_ex/
+ 1841  ls
+ 1842  python sub2.py
+ 1843  cp sub2.py sub4.py
+ 1844  git checkout sub2.py
+ 1845  python sub2.py
+ 1846  ls
+ 1847  vi sub4.py 
+ 1848  vi pub2.py 
+ 1849  cp pub2.py pub4.py
+ 1850  git add pub4.py sub4.py 
+ 1851  git commit -m "pub4 and sub4 can handle streaming data, will always stay open, to keep transferring data. Currently, very slow and only moves on file at a time"
+ 1852  git push
+ 1853  atom
+ 1854  python sub4.py 
+ 1855  git add sub4.py 
+ 1856  git commit -m "minor fixes, works on accepting full streaming data"
+ 1857  git push
+ 1858  git status
+ 1859  gitdiff pub2.py 
+ 1860  git diff pub2.py
+ 1861  cd ../
+ 1862  ls
+ 1863  sudo mkdir /tmp/ramdisk
+ 1864  sudo chmod 777 /tmp/ramdisk
+ 1865  htop
+ 1866  sudo apt install htop
+ 1867  htop
+ 1868  sudo mount -t tmpfs -o size=150m yulieramdisk /tmp/ramdisk
+ 1869  mount | tail -n 1
+ 1870  sudo dd if=/dev/zero of=/tmp/ramdisk/zero bs=4k count=10000
+ 1871  sudo dd if=/tmp/ramdisk/zero of=/dev/null bs=4k count=10000
+ 1872  sudo nano /etc/fstab
+ 1873  df -h
+ 1874  ls
+ 1875  cd old
+ 1876  ls
+ 1877  atom
+ 1878  atome
+ 1879  atom
+ 1880  cd stream_transfer/zmq_ex/
+ 1881  ls
+ 1882  python pub2.py 
+ 1883  python sub2.py 
+ 1884  python pub2.py 
+ 1885  ls
+ 1886  cp pub2.py pub3.py
+ 1887  cp sub2.py sub3.py
+ 1888  ls
+ 1889  git pull pub2.py
+ 1890  git checkout pub2.py
+ 1891  git checkout sub2.py
+ 1892  ls
+ 1893  python pub2.py 
+ 1894  cd ../test
+ 1895  cd ../test_files/
+ 1896  ls
+ 1897  pwd
+ 1898  cd ../
+ 1899  ls
+ 1900  cd zmq_ex/
+ 1901  ls
+ 1902  python pub2.py 
+ 1903  ls ../destination/
+ 1904  ls
+ 1905  cd ../
+ 1906  ls
+ 1907  cd destination/
+ 1908  ls
+ 1909  cd ../
+ 1910  ls
+ 1911  cd test_files
+ 1912  ls
+ 1913  cp ../gen_data_in_files.py .
+ 1914  ls
+ 1915  python gen_data_in_files.py 
+ 1916  cd ../
+ 1917  ls
+ 1918  cd streaming/
+ 1919  ls
+ 1920  cd ../
+ 1921  cd other_files/
+ 1922  ls
+ 1923  cd ../
+ 1924  ls
+ 1925  cp other_files/*.* test_files/.
+ 1926  cd destination
+ 1927  ls
+ 1928  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./ file
+ 1929  mkdir testing
+ 1930  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./ file
+ 1931  ls
+ 1932  cd ../
+ 1933  ls
+ 1934  history
+ 1935  ls
+ 1936  cd test_files
+ 1937  ls
+ 1938  python gen_data_in_files.py 1440 1024 1024 180 0 180 ./ file
+ 1939  ls
+ 1940  cd ../
+ 1941  ls
+ 1942  cd zmq_ex/
+ 1943  ls
+ 1944  cp pub2.py pub_delete.py
+ 1945  cp sub4.py sub_delete.py
+ 1946  git add pub_delete.py sub_delete.py 
+ 1947  git commit -m "Delete files after being transferred, currently not working stage"
+ 1948  git push
+ 1949  cd ../
+ 1950  git status
+ 1951  git diff zmq_ex/sub4.py
+ 1952  cd zmq_ex/
+ 1953  python pub4.py 
+ 1954  cd ../
+ 1955  ls
+ 1956  cd streaming/
+ 1957  ls
+ 1958  cd ../
+ 1959  rm -rf streaming
+ 1960  ls
+ 1961  cd old
+ 1962  ls
+ 1963  cd stream_transfer/
+ 1964  ls
+ 1965  cd zmq_ex/
+ 1966  ls
+ 1967  cd ../
+ 1968  ls
+ 1969  ls test_files/
+ 1970  ls
+ 1971  ls destination/
+ 1972  cd zmq_ex/
+ 1973  ls
+ 1974  python pub2.py 
+ 1975  ls
+ 1976  ls ../destination/
+ 1977  python pub2.py 
+ 1978  sudo netstat -ltnp
+ 1979  kill -p 
+ 1980  kill -p 127.0.0.1:10111
+ 1981  kill -p 
+ 1982  kill -p 127.0.0.1
+ 1983  kill -9 127.0.0.1:10111
+ 1984  kill -9 10111
+ 1985  kill -9 32396
+ 1986  kill -9 876
+ 1987  python pub2.py 
+ 1988  kill -9 32396
+ 1989  sudo netstat -ltnp
+ 1990  python pub2.py 
+ 1991  sudo netstat -ltnp
+ 1992  ls
+ 1993  cd ../
+ 1994  ls
+ 1995  cd destination/
+ 1996  ls
+ 1997  cd testing
+ 1998  ls
+ 1999  cd ../
+ 2000  rm -rf testing
+ 2001  ls
+ 2002  cd stream_transfer/
+ 2003  ls
+ 2004  cd old/
+ 2005  ls
+ 2006  git add update3.py
+ 2007  git commit -m "script that succesfully transfers streaming data from source to destination using globus"
+ 2008  git push
+ 2009  cd ../
+ 2010  ls
+ 2011  cd zmq_ex/
+ 2012  ls
+ 2013  atom
+ 2014  ls ../test_files/
+ 2015  python sub2.py 
+ 2016  python sub4.py 
+ 2017  python sub3.py 
+ 2018  df -h
+ 2019  python sub4.py 
+ 2020  cp sub4.py sub5.py
+ 2021  cp pub4.py sub5.py
+ 2022  cp sub4.py sub5.py
+ 2023  cp pub4.py pub5.py
+ 2024  git add sub5.py pub5.py 
+ 2025  git commit -m "corrected sub and pub scripts with correct context placement"
+ 2026  git push
+ 2027  git checkout sub4.py
+ 2028  git checkout pub4.py
+ 2029  git status
+ 2030  git commit -a -m "updated files with comments indicating what each script does"
+ 2031  git push
+ 2032  ls
+ 2033  cp sub5.py sub6_delete.py
+ 2034  cp pub5.py pub6_delete.py
+ 2035  python sub5.py 
+ 2036  atom
+ 2037  git add pub5.py 
+ 2038  git add sub5.py
+ 2039  git commit -m "corrected comments"
+ 2040  git push
+ 2041  cd ../
+ 2042  ls
+ 2043  cd ../
+ 2044  ls
+ 2045  cd streamer
+ 2046  ls
+ 2047  cd data/
+ 2048  ls
+ 2049  cd sample/
+ 2050  ls
+ 2051  cd ..
+ 2052  ls
+ 2053  vi trace_streamer.h 
+ 2054  vi trace_streamer.c 
+ 2055  cd ../
+ 2056  ls
+ 2057  cd Trace/
+ 2058  ls
+ 2059  git status
+ 2060  ls
+ 2061  cd src/
+ 2062  ls
+ 2063  cd mlem/
+ 2064  ls
+ 2065  cd ..
+ 2066  ls
+ 2067  cd common/
+ 2068  ls
+ 2069  cd stream/
+ 2070  ls
+ 2071  vi trace_mq.h 
+ 2072  vi trace_mq.cc 
+ 2073  cd ..
+ 2074  ls
+ 2075  cd ..
+ 2076  ls
+ 2077  cd ..
+ 2078  ls
+ 2079  cd stream
+ 2080  cd streamer/
+ 2081  ls
+ 2082  vi trace_streamer.c 
+ 2083  cd ..
+ 2084  ls
+ 2085  cd stream_transfer/
+ 2086  ls
+ 2087  python gen_data_in_files.py 
+ 2088  python gen_data_in_files.py 360 1024 1024 180 0 360 /tmp/ramdisk/ file
+ 2089  python gen_data_in_files.py 30 1024 1024 180 0 30 /tmp/ramdisk/ file
+ 2090  python gen_data_in_files.py 30 1024 1024 180 5 30 /tmp/ramdisk/ file
+ 2091  python gen_data_in_files.py 30 1024 1024 180 2 30 /tmp/ramdisk/ file
+ 2092  vi gen_data_in_files.py 
+ 2093  history > file_generation.out
