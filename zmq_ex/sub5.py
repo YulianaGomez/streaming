@@ -6,7 +6,7 @@ import sys
 import glob
 import ntpath
 
-"""WORKING VERSION - can accept streaming data from pub4.py 
+"""WORKING VERSION - can accept streaming data from pub5.py
 has correct placement of context and terminations"""
 
 context = zmq.Context()

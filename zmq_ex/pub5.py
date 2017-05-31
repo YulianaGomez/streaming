@@ -4,7 +4,7 @@ import os
 import sys
 import glob
 
-"""WORKING VERSION - correct version of pub4 s
+"""WORKING VERSION - corrected version of pub4 
 has correct placement of context and terminations"""
 
 ##def main():
