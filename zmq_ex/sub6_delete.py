@@ -13,9 +13,19 @@ works with pub5,6,7,8 versions"""
 
 context = zmq.Context()
 subscriber = context.socket(zmq.SUB)
+#subscriber.connect("tcp://127.0.0.1:10111")
 subscriber.connect("tcp://127.0.0.1:10111")
-subscriber.setsockopt(zmq.SUBSCRIBE,'')
+subscriber.setsockopt(zmq.SUBSCRIBE, b'')
 
+#synchronize with publisher
+syncclient = context.socket(zmq.REQ)
+syncclient.connect('tcp://127.0.0.1:10112')
+#msg = subscriber.recv(313344)
+#send a synchronization request
+syncclient.send('sending msg from subscriber')
+
+#wait for synchronization reply
+syncclient.recv()
 
 print("About to receive")
 
@@ -31,10 +41,6 @@ while True:
         #filename = 'personnel.db'
     #destfilename = 'test1.txt'
         destfile = '/home/parallels/stream_transfer/destination/' + destfilename
-
-        """if os.path.isfile(destfile):
-            os.remove(destfile)
-            #time.sleep(2)"""
 
         #msg = subscriber.recv(313344)
         msg = subscriber.recv()
