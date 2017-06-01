@@ -10,8 +10,11 @@ import ntpath
 has correct placement of context and terminations, can delete data after
 transfer is complete, waits for more data once transfer is complete
 works with pub5,6,7,8 versions
+
+6/1/2017 - can accept data from ramdisk
+
 Yuliana Zamora
-yzamora@uchicago.edu
+email: yzamora@uchicago.edu
 Last worked on: June 1, 2017
 
 """
@@ -40,9 +43,10 @@ print("About to receive")
 #while True:
 #/home/parallels/stream_transfer/test_files/test1.txt
 
-files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-#path = '/home/parallels/stream_transfer/test_files/'
+#files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+files = glob.glob('/tmp/ramdisk/*')
 #filename = 'test1.txt'
+
 for filename in files:
     destfilename = ntpath.basename(filename)
     #filename = 'personnel.db'

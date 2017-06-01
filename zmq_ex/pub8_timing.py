@@ -10,6 +10,9 @@ has correct placement of context and terminations,
 deletes files after being transferred, waits for new files to transfer
 than delete. achieves timing of transfer
 
+6/1/2017 - can transfer data (121M h5 files) from ramdisk to chosen
+destination -2.389 seconds
+
 Yuliana Zamora
 yzamora@uchicago.edu
 Last worked on: June 1, 2017
@@ -34,7 +37,8 @@ def transfer():
 
     ##while True: #removed to get none streaming transfer done
     # Read files (names) from fs
-    files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+    #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+    files = glob.glob('/tmp/ramdisk/*')
     #if len(files) > 0:
     #    print("About the send")
     for f in files:
@@ -54,20 +58,20 @@ def transfer():
 
     #publisher.close()
     #context.term()
-        """Creating second handshake sequence"""
+    """Creating second handshake sequence"""
 
-    print 'Finished sending data, waiting for second handshake'
+    #print 'Finished sending data, waiting for second handshake'
     syncservice = context.socket(zmq.REP)
 
-    print 'waiting for handshake'
+    #print 'waiting for handshake'
     syncservice.bind('tcp://127.0.0.1:10113')
 
-    print '...still waiting for handshake'
+    #print '...still waiting for handshake'
     msg = syncservice.recv() ##currently not getting past here
 
-    print "Received request: ", msg
+    #print "Received request: ", msg
     syncservice.send("Finished sending")
-    print "past sent part"
+    #print "past sent part"
     t1 = time.time()
     total = t1-t0
     print ("total time to transfer: %f seconds"%total)
@@ -75,16 +79,16 @@ def transfer():
     #target.close()
     publisher.close()
     context.term()
-    print"past close and context terminate"
+    #print"past close and context terminate"
 
 
             ########MAIN##########
 
 if __name__ == '__main__':
-    t0 = time.time()
+    #t0 = time.time()
     transfer()
-    t1 = time.time()
-    total = t1-t0
+    #t1 = time.time()
+    #total = t1-t0
     #print ("total time to transfer: %f seconds"%total)
     #while True:
     #    files = glob.glob('/home/parallels/stream_transfer/test_files/*')
