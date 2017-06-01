@@ -49,4 +49,4 @@ for i in range(0,nfiles):
 ttime = time.time()-start
 total_size_mb = 4*nfiles*nprojstep*nrows*ncols/(1024*1024.)
 
-print "Total dataset size=" + str(total_size_mb) + "; Elapsed time=" + str(ttime) + "; Average file generation rate=" + str(ttime/nfiles) + " files/sec (" + str(total_size_mb/ttime) + "MB/sec)"
+print "Total dataset size=" + str(total_size_mb) + "; Elapsed time=" + str(ttime) + "; Average file generation rate=" + str(nfiles/ttime) + " files/sec (" + str(total_size_mb/ttime) + "MB/sec)"
