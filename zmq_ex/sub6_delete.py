@@ -18,7 +18,6 @@ email: yzamora@uchicago.edu
 Last worked on: June 1, 2017
 
 """
-
 context = zmq.Context()
 subscriber = context.socket(zmq.SUB)
 #subscriber.connect("tcp://127.0.0.1:10111")

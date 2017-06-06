@@ -35,12 +35,14 @@ def transfer():
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
 
+
     ##while True: #removed to get none streaming transfer done
     # Read files (names) from fs
-    #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-    files = glob.glob('/tmp/ramdisk/*')
+    files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+    #files = glob.glob('/tmp/ramdisk/*')
     #if len(files) > 0:
     #    print("About the send")
+    #publisher.send(files)
     for f in files:
         print 'loop'
         size = os.stat(f).st_size
@@ -49,7 +51,12 @@ def transfer():
         target = open(f, 'rb')
         ff = target.read(size)
         #if file:
-        publisher.send(ff)
+        sendfile = f +' '+ ff
+        item_pub = sendfile.split()
+        item_name = item_pub[0]
+        print 'name from pub side = ',item_name
+        publisher.send(sendfile)
+        print 'sent msg from pub side'
         os.remove(f)
         #print('Finished removing files from source directory')
         #target.close()
