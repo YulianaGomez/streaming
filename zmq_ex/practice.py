@@ -35,10 +35,26 @@ def client_thread(ctx, pipe):
         ])
 
         try:
-            destfile = '/home/parallels/stream_transfer/zmq_ex/test_open.txt'
-            chunk = dealer.recv()
+            #destfile = '/home/parallels/stream_transfer/zmq_ex/test_open.txt'
+            destroot = '/home/parallels/stream_transfer/destination/'
+            #chunk = dealer.recv()
+            try:
+                msg = dealer.recv_multipart()
+            except zmq.ZMQError as e:
+                if e.errno == zmq.ETERM:
+                    return   # shutting down, quit
+                else:
+                    raise
+            print "msg = ",msg
+            [fname, chunk] = msg
+
+            filestrs = fname.split('/')
+            fn = destroot+filestrs[len(filestrs)-1]
+
             #f = open(destfile, 'wb')
-            f = open(destfile, 'ab') #appends to the file, writes the entire file
+            print 'Puting the chunk here:',fn
+            f = open(fn, 'ab')
+            #f = open(destfile, 'ab') #appends to the file, writes the entire file
             print 'open'
             f.write(chunk)
             print 'close\n'
@@ -82,7 +98,6 @@ def server_thread(ctx,fn):
                 raise
 
         identity, command, offset_str, chunksz_str = msg #msg is a list
-        #print "this is identity: ",offset_str
         assert command == b"fetch"
 
         offset = int(offset_str)
@@ -93,10 +108,12 @@ def server_thread(ctx,fn):
         data = file.read(chunksz)
 
         # Send resulting chunk to client
-        router.send_multipart([identity, data])
+        router.send_multipart([identity, fn, data])
 
-        #remove file after it is sent!
-        os.remove(fn)
+        #deleting after file sent
+        if sys.getsizeof(data) < chunksz:
+            #remove file after it is sent!
+            os.remove(fn)
 
 
 # The main task is just the same as in the first model.
