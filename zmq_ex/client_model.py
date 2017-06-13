@@ -2,7 +2,7 @@
 
 Author: Yuliana Zamora
 Email: yzamora@uchicago.edu
-Last worked on: June 5, 2017
+Last worked on: June 12, 2017
 """
 
 import os
@@ -14,11 +14,12 @@ from zhelpers import socket_set_hwm, zpipe
 
 CHUNK_SIZE = 250
 
-def client_thread(ctx, pipe):
+def client():
+    ctx = zmq.Context()
     dealer = ctx.socket(zmq.DEALER)
     socket_set_hwm(dealer, 1)
-    dealer.connect("tcp://127.0.0.1:6000")
-
+    #dealer.connect("tcp://127.0.0.1:6000")
+    dealer.connect("tcp://34.207.160.51:10120")
     total = 0       # Total bytes received
     chunks = 0      # Total chunks received
 
@@ -31,8 +32,26 @@ def client_thread(ctx, pipe):
         ])
 
         try:
-            chunk = dealer.recv()
-            f = open(test_open.txt, 'wb')
+            #destroot = '/home/ubuntu/yzamora/streaming/destination/' #Rose's machine
+            destroot = '/home/parallels/stream_transfer/destination/' #my machine 
+            #chunk = dealer.recv()
+            try:
+                msg = dealer.recv_multipart()
+            except zmq.ZMQError as e:
+                if e.errno == zmq.ETERM:
+                    return   # shutting down, quit
+                else:
+                    raise
+            #print "msg = ",msg
+            [fname, chunk] = msg
+
+            filestrs = fname.split('/')
+            fn = destroot+filestrs[len(filestrs)-1]
+
+            #f = open(destfile, 'wb')
+            #print 'Puting the chunk here:',fn
+            f = open(fn, 'ab')
+            #f = open(destfile, 'ab') #appends to the file, writes the entire file
             print 'open'
             f.write(chunk)
             print 'close\n'
@@ -46,11 +65,11 @@ def client_thread(ctx, pipe):
         chunks += 1
         size = len(chunk)
         total += size
-        if size < CHUNK_SIZE:
-            break   # Last chunk received; exit
+        #if size < CHUNK_SIZE:
+        #    break   # Last chunk received; exit
 
     print ("%i chunks received, %i bytes" % (chunks, total))
-    pipe.send(b"OK")
+    #pipe.send(b"OK")
 
 
 
@@ -59,21 +78,21 @@ def client_thread(ctx, pipe):
 def main():
 
     # Start child threads
-    ctx = zmq.Context()
-    b = zpipe(ctx)
+    #ctx = zmq.Context()
+    #b = zpipe(ctx)
 
-    client = Thread(target=client_thread, args=(ctx, b))
+    #client = Thread(target=client_thread, args=(ctx, b))
     #server = Thread(target=server_thread, args=(ctx,))
-    client.start()
+    client()#.start()
     #server.start()
 
     # loop until client tells us it's done
-    try:
-        print "sending data"
-    except KeyboardInterrupt:
-        pass
-    del b
-    ctx.term()
+    #try:
+    #    print "sending data"
+    #except KeyboardInterrupt:
+    #    pass
+    #del b
+    #ctx.term()
 
 if __name__ == '__main__':
     main()
