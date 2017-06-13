@@ -46,63 +46,63 @@ def server():
     print "Received request: ", msg
     syncservice.send("Message from 10111")"""
 
-    while True:
+    #while True: #removed to test non-streaming transfers
         # First frame in each message is the sender identity
         # Second frame is "fetch" command
         #files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
-        files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
-        for curFile in files:
-            cfile = open(curFile, "r")
-            try:
-                msg = router.recv_multipart()
-            except zmq.ZMQError as e:
-                if e.errno == zmq.ETERM:
-		    print "at error"
-                    return   # shutting down, quit
-                else:
-                    raise
+    files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
+    for curFile in files:
+        cfile = open(curFile, "r")
+        try:
+            msg = router.recv_multipart()
+        except zmq.ZMQError as e:
+            if e.errno == zmq.ETERM:
+	    print "at error"
+                return   # shutting down, quit
+            else:
+                raise
 
-            identity, command, offset_str, chunksz_str = msg #msg is a list
-            #assert command == b"fetch"
+        identity, command, offset_str, chunksz_str = msg #msg is a list
+        #assert command == b"fetch"
 
-            offset = int(offset_str)
-            chunksz = int(chunksz_str)
+        offset = int(offset_str)
+        chunksz = int(chunksz_str)
 
-            # Read chunk of data from file
-            cfile.seek(offset, os.SEEK_SET)
-            data = cfile.read(chunksz)
+        # Read chunk of data from file
+        cfile.seek(offset, os.SEEK_SET)
+        data = cfile.read(chunksz)
 
-            # Send resulting chunk to client
-            router.send_multipart([identity, curFile, data])
+        # Send resulting chunk to client
+        router.send_multipart([identity, curFile, data])
 
-            #deleting after file sent
-            if sys.getsizeof(data) < chunksz:
-                #remove file after it is sent!
-                os.remove(curFile)
+        #deleting after file sent
+        if sys.getsizeof(data) < chunksz:
+            #remove file after it is sent!
+            os.remove(curFile)
 
-        #########Creating second handshake sequence################
+    #########Creating second handshake sequence################
 
-        #print 'Finished sending data, waiting for second handshake'
-        syncservice = context.socket(zmq.REP)
+    #print 'Finished sending data, waiting for second handshake'
+    syncservice = context.socket(zmq.REP)
 
-        #print 'waiting for handshake'
-        syncservice.bind('tcp://*:10113')
+    #print 'waiting for handshake'
+    syncservice.bind('tcp://*:10113')
 
-        #print '...still waiting for handshake'
-        msg = syncservice.recv() ##currently not getting past here
+    #print '...still waiting for handshake'
+    msg = syncservice.recv() ##currently not getting past here
 
-        #print "Received request: ", msg
-        syncservice.send("Finished sending")
-        #print "past sent part"
-        t1 = time.time()
-        total = t1-t0
-        print ("total time to transfer: %f seconds"%total)
-        ############################################################
+    #print "Received request: ", msg
+    syncservice.send("Finished sending")
+    #print "past sent part"
+    t1 = time.time()
+    total = t1-t0
+    print ("total time to transfer: %f seconds"%total)
+    ############################################################
 
-        #target.close()
-        publisher.close()
-        context.term()
-        #print"past close and context terminate"
+    #target.close()
+    publisher.close()
+    context.term()
+    #print"past close and context terminate"
 
 
 
