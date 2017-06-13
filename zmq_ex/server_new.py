@@ -1,4 +1,4 @@
-"""SERVER sending credits, waiting for messages,
+"""SERVER,
 Server thread waits for a chunk request from a client,
 reads that chunk and sends it back to the client
 
@@ -57,7 +57,7 @@ def server():
             msg = router.recv_multipart()
         except zmq.ZMQError as e:
             if e.errno == zmq.ETERM:
-	    print "at error"
+	        print "at error"
                 return   # shutting down, quit
             else:
                 raise
@@ -104,16 +104,6 @@ def server():
     context.term()
     #print"past close and context terminate"
 
-
-
-        """try:
-            msg = router.recv_multipart()
-        except zmq.ZMQError as e:
-            if e.errno == zmq.ETERM:
-                print "at error"
-                return   # shutting down, quit
-            else:
-                raise"""
 
 ###################MAIN METHOD##########################
 
