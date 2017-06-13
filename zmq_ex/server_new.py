@@ -11,6 +11,7 @@ import sys
 import time
 import glob
 from threading import Thread
+import time
 
 import zmq
 
@@ -22,9 +23,18 @@ def server():
 
 
     #file = open(fn, "r")
+    to = time.time()
     context = zmq.Context()
     router = context.socket(zmq.ROUTER)
     #router = ctx.socket(zmq.ROUTER)
+
+    ####Creating FIRST handshake sequence#######
+    syncservice = context.socket(zmq.REP)
+    syncservice.bind('tcp://*:10112')
+    msg = syncservice.recv()
+    print "Received request: ", msg
+    syncservice.send("Message from 10111") #send synchronization reply
+    ######################################
 
     #router.bind("tcp://*:6000")
 
@@ -69,6 +79,31 @@ def server():
             if sys.getsizeof(data) < chunksz:
                 #remove file after it is sent!
                 os.remove(curFile)
+
+        #########Creating second handshake sequence################
+
+        #print 'Finished sending data, waiting for second handshake'
+        syncservice = context.socket(zmq.REP)
+
+        #print 'waiting for handshake'
+        syncservice.bind('tcp://*:10113')
+
+        #print '...still waiting for handshake'
+        msg = syncservice.recv() ##currently not getting past here
+
+        #print "Received request: ", msg
+        syncservice.send("Finished sending")
+        #print "past sent part"
+        t1 = time.time()
+        total = t1-t0
+        print ("total time to transfer: %f seconds"%total)
+        ############################################################
+
+        #target.close()
+        publisher.close()
+        context.term()
+        #print"past close and context terminate"
+
 
 
         """try:
