@@ -19,26 +19,22 @@ from zhelpers import socket_set_hwm, zpipe
 
 #CHUNK_SIZE = 250
 
-def server():
-
-
+def server(router, files):
     #file = open(fn, "r")
-    to = time.time()
-    context = zmq.Context()
-    router = context.socket(zmq.ROUTER)
+    t0 = time.time()
     #router = ctx.socket(zmq.ROUTER)
 
-    ####Creating FIRST handshake sequence#######
+    """####Creating FIRST handshake sequence#######
     syncservice = context.socket(zmq.REP)
     syncservice.bind('tcp://*:10112')
     msg = syncservice.recv()
     print "Received request: ", msg
-    syncservice.send("Message from 10111") #send synchronization reply
+    syncservice.send("Message from server") #send synchronization reply
     ######################################
+    print "past first handshake"""
 
     #router.bind("tcp://*:6000")
 
-    router.bind("tcp://*:10120")
     """Creating handshake sequence
     syncservice = ctx.socket(zmq.REP)
     syncservice.bind('tcp://*:10112')
@@ -47,42 +43,58 @@ def server():
     syncservice.send("Message from 10111")"""
 
     #while True: #removed to test non-streaming transfers
-        # First frame in each message is the sender identity
-        # Second frame is "fetch" command
-        #files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
-    files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
+    # First frame in each message is the sender identity
+    # Second frame is "fetch" command
+    #files = glob.glob('/home/parallels/globus-sdk-python/globusnram/test_files/*')
+    #files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
     for curFile in files:
-        cfile = open(curFile, "r")
         try:
             msg = router.recv_multipart()
         except zmq.ZMQError as e:
             if e.errno == zmq.ETERM:
-	        print "at error"
-                return   # shutting down, quit
+               print "at error"
+               return   # shutting down, quit
             else:
-                raise
+               raise
+        [identity, command, chunksz_str] = msg
+        if command != "fetch":
+            print("Failed file metadata exchange!")
+            sys.exit(1)
 
-        identity, command, offset_str, chunksz_str = msg #msg is a list
-        #assert command == b"fetch"
-
-        offset = int(offset_str)
         chunksz = int(chunksz_str)
+     	cfile = open(curFile, "r")
 
-        # Read chunk of data from file
-        cfile.seek(offset, os.SEEK_SET)
-        data = cfile.read(chunksz)
+        router.send_multipart([identity, curFile, "ready"])
 
-        # Send resulting chunk to client
-        router.send_multipart([identity, curFile, data])
+        print("File=" + str(curFile) + "; Chunk size=" + chunksz_str)
+        while True:
+            msg = router.recv_multipart()
+            identity, status, curr_offset_str = msg
+            if status!="transfer":
+                print("no transfer msg received.")
+                sys.exit(3)
+            #print("File=" + curFile + "; Client's offset=" + curr_offset_str)
 
-        #deleting after file sent
-        if sys.getsizeof(data) < chunksz:
-            #remove file after it is sent!
-            os.remove(curFile)
+	    # Read chunk of data from file
+            offset = int(curr_offset_str)
+	    cfile.seek(offset, os.SEEK_SET)
+	    data = cfile.read(chunksz)
+
+	    # Send resulting chunk to client
+	    router.send_multipart([identity, data])
+
+	    #deleting after file sent
+	    #sys.getsizeof returns size in bytes, 
+	    #if data < chunk size, than there is 
+	    #nothing more toread after this
+
+            if data=='':
+               os.remove(curFile)
+               break
 
     #########Creating second handshake sequence################
 
-    #print 'Finished sending data, waiting for second handshake'
+    """#print 'Finished sending data, waiting for second handshake'
     syncservice = context.socket(zmq.REP)
 
     #print 'waiting for handshake'
@@ -93,46 +105,32 @@ def server():
 
     #print "Received request: ", msg
     syncservice.send("Finished sending")
-    #print "past sent part"
+    #print "past sent part" """
     t1 = time.time()
     total = t1-t0
     print ("total time to transfer: %f seconds"%total)
     ############################################################
 
     #target.close()
-    publisher.close()
-    context.term()
+    #publisher.close()
     #print"past close and context terminate"
 
 
 ###################MAIN METHOD##########################
 
-def main():
-    server()
-        # Start child threads
-        #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-        #for fn in files:
-        #    ctx = zmq.Context()
-        #    a = zpipe(ctx)
-
-            #client = Thread(target=client_thread, args=(ctx, b))
-        #    server = Thread(target=server_thread, args=(ctx,))
-            #client.start()
-        #    server.start()
-
-            # loop until client tells us it's done
-        #    try:
-        #        print a.recv()
-        #    except KeyboardInterrupt:
-        #        pass
-        #    del a
-        #    ctx.term()
-
 if __name__ == '__main__':
+    # initialize zmq
+    context = zmq.Context()
+    router = context.socket(zmq.ROUTER)
+    router.bind("tcp://*:10120")
+
     while True:
-        #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
         files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
         if len(files) > 0:
-            main()
+            server(router, files)
         else:
             time.sleep(1)
+
+    # finalize zmq
+    router.close()
+    context.term()
