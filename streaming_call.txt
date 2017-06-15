@@ -1,2 +1,5 @@
 python gen_data_in_files.py 30 1024 1024 180 2 30 ~/stream_transfer/test_files/ file
-
+python gen_data_in_files.py 1440 1024 1024 180 0 180 "/home/ubuntu/yzamora/streaming/test_files/" file
+fallocate -l 1000000 output.txt
+sudo dd if=/dev/zero of=/tmp/ramdisk/zero bs=4k count=10000
+sudo dd if=/tmp/ramdisk/zero of=/dev/null bs=4k count=10000
