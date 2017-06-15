@@ -4,7 +4,7 @@ reads that chunk and sends it back to the client
 
 Author: Yuliana Zamora
 Email: yzamora@uchicago.edu
-Last worked on: June 13, 2017
+Last worked on: June 14, 2017
 """
 import os
 import sys
@@ -21,7 +21,7 @@ from zhelpers import socket_set_hwm, zpipe
 
 def server(router, files):
     #file = open(fn, "r")
-    t0 = time.time()
+    #t0 = time.time()
     #router = ctx.socket(zmq.ROUTER)
 
     """####Creating FIRST handshake sequence#######
@@ -106,9 +106,9 @@ def server(router, files):
     #print "Received request: ", msg
     syncservice.send("Finished sending")
     #print "past sent part" """
-    t1 = time.time()
-    total = t1-t0
-    print ("total time to transfer: %f seconds"%total)
+    #t1 = time.time()
+    #total = t1-t0
+    #print ("total time to transfer: %f seconds"%total)
     ############################################################
 
     #target.close()
@@ -125,11 +125,32 @@ if __name__ == '__main__':
     router.bind("tcp://*:10120")
 
     while True:
-        files = glob.glob('/home/ubuntu/yzamora/streaming/test_files/*')
+        files = glob.glob('/home/ubuntu/yzamora/stream2/test_files/*')
         if len(files) > 0:
+            t0 = time.time()
             server(router, files)
+            break #use if testing for timing
         else:
             time.sleep(1)
+
+
+###################CHECKING##############################
+    try:
+        msg = router.recv_multipart()
+    except zmq.ZMQError as e:
+        if e.errno == zmq.ETERM:
+            print "at error"
+            sys.exit(1)   # shutting down, quit
+        else:
+            raise
+    [identity, command, chunksz_str] = msg
+    if command != "fetch":
+        print("Failed file metadata exchange!")
+        sys.exit(1)
+#############MSG SENT FROM CLIENT THAT IT RECEIVED FILE#######
+    t1 = time.time()
+    total = t1-t0
+    print ("total time to transfer: %f seconds"%total)
 
     # finalize zmq
     router.close()
