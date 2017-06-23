@@ -8,6 +8,9 @@ import time
 import glob
 import argparse
 
+import globus_transfer
+import client_model
+
 ##============================================================================##
 ##------------------------------- stream_data.py -----------------------------##
 ##============================================================================##
@@ -17,7 +20,7 @@ Purpose:              Countinuously creates random new files.
 Author:               Yuliana Zamora
 Email:
 Date Created:         June 22, 2017
-Date Last Modified:   June 22, 2017
+Date Last Modified:   June 23, 2017
 '''
 
 ################################################################################
@@ -93,6 +96,8 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-z", "--zeromq", dest="zeromq", action = "store_true", default=False)
 	parser.add_argument("-g", "--globus", dest="globus", action = "store_true", default=False)
+	parser.add_argument("-m", "--many", dest="many")
+	parser.add_argument("-o", "--one", dest="one")
 	#parser.add_argument("-d" , "--dest_endpoint" , dest="dest_endpoint")
 	#parser.add_argument("-s" , "--source_endpoint" , dest="source_endpoint")
 	args = parser.parse_args()
@@ -100,9 +105,15 @@ if __name__ == "__main__":
 	zeromq = args.zeromq
 
 	if zeromq:
-	    print "You are running with zeromq"
+	    print "You are running the client side with ZeroMQ. Waiting for server to send msgs."
+	    client_model.client(0,"","","")
+
 	else:
 		if globus:
-			print "You are running globus"
+			globus_transfer.service()
+			print "You are running Globus"
+			files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+        	if len(files) > 0: 
+				globus_transfer.transfer()
 		else:
-			print "wrong"
+			print "You haven't picked a message passage interface: -z for zeromq or -g for globus"
