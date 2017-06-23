@@ -123,12 +123,15 @@ if __name__ == '__main__':
     context = zmq.Context()
     router = context.socket(zmq.ROUTER)
     router.bind("tcp://*:10120")
+    print("zmq has been initialized")
 
     while True:
         #files = glob.glob('/home/ubuntu/yzamora/stream2/test_files/*')
-        files = glob.glob('/home/yzamora/streaming/test_files/*')
+        files = glob.glob('/scratch/zero_globus/test_files/*')
         if len(files) > 0:
+	    print("currently in while in if")
             t0 = time.time()
+            print("before server is called")
             server(router, files)
             break #use if testing for timing
         else:
