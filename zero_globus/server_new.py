@@ -125,7 +125,8 @@ if __name__ == '__main__':
     router.bind("tcp://*:10120")
 
     while True:
-        files = glob.glob('/home/ubuntu/yzamora/stream2/test_files/*')
+        #files = glob.glob('/home/ubuntu/yzamora/stream2/test_files/*')
+        files = glob.glob('/home/yzamora/streaming/test_files/*')
         if len(files) > 0:
             t0 = time.time()
             server(router, files)

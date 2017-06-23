@@ -14,8 +14,10 @@ import zmq
 from zhelpers import socket_set_hwm, zpipe
 
 DEFAULT_CHUNK_SIZE=1024
-DEFAULT_OUTPUT_DIR="/home/parallels/yzamora/streaming/destination/"
-DEFAULT_DEST_ADDR="34.207.160.51"
+#DEFAULT_OUTPUT_DIR="/home/parallels/yzamora/streaming/destination/"
+#DEFAULT_DEST_ADDR="34.207.160.51"
+DEFAULT_OUTPUT_DIR - "/home/yzamora/streaming/destination"
+DEFAULT_DEST_ADDR ="140.221.68.131"
 DEFAULT_DEST_PORT="10120"
 
 def client(chunk_size, output_dir, dest_addr, dest_port):
@@ -85,7 +87,7 @@ def main():
    if len(sys.argv)<5:
       print("Usage: python " + sys.argv[0] + " <chunk-size="+str(DEFAULT_CHUNK_SIZE) + "> <output-dir="+ DEFAULT_OUTPUT_DIR + "> <dest-address=" + DEFAULT_DEST_ADDR + "> <dest-port=" + DEFAULT_DEST_PORT + ">")
       sys.exit(0)
-
+   #CALL: python client_model.py 0 "" "" "" for default setting 
    chunk_size = int(sys.argv[1])
    if chunk_size==0: chunk_size=DEFAULT_CHUNK_SIZE
 
