@@ -22,7 +22,7 @@ Purpose:              Countinuously creates random new files.
 Author:               Yuliana Zamora
 Email:
 Date Created:         June 22, 2017
-Date Last Modified:   June 23, 2017
+Date Last Modified:   June 24, 2017
 '''
 
 ################################################################################
@@ -84,7 +84,21 @@ def one_file():
 	    subprocess.call(["mv",fname_src,fname_dst])
 	print "All files Done."
 
-
+def stream_child():
+    file_number = input("How many files would you like to create? Enter 0 for infinite: ")
+    if (file_number == 0): print ("Creating a streaming set of files. Ctrl+Z or C to stop")
+    try:
+        pid = os.fork()
+        if pid == 0: 
+            mult_files(file_number)
+            os._exit(0)
+        else:     
+            if file_number ==0: time.sleep(1)
+            else: os.waitpid(pid,0)
+            return
+    except OSError, e:
+        print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
+        sys.exit(1)
 ################################################################################
 ##============================================================================##
 ##------------------------------------ MAIN ----------------------------------##
@@ -116,17 +130,11 @@ if __name__ == "__main__":
 	elif globus:
             globus_transfer.service()
             print "You are running Globus"
-            files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-    	    if len(files) > 0: 
-                globus_transfer.transfer()
-	elif server:
-	    print "You are starting the server side with ZMQ"
-	    file_number = input("How many files would you like to create? Enter 0 for infinite: ")
+            file_number = input("How many files would you like to create? Enter 0 for infinite: ")
             if (file_number == 0): print ("Creating a streaming set of files. Ctrl+Z or C to stop")
-	    
             try:
                 pid = os.fork()
-                if pid == 0: 
+                if pid == 0:
                     mult_files(file_number)
                     os._exit(0)
                 else:
@@ -134,7 +142,14 @@ if __name__ == "__main__":
             except OSError, e:
                 print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
                 sys.exit(1)
+            
 
+            files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
+    	    if len(files) > 0: 
+                globus_transfer.transfer()
+	elif server:
+	    print "You are starting the server side with ZMQ"
+            stream_child()        
             print "Your files are being created and will be sent to client/sub via ZMQ once connected"
             context = zmq.Context()
             router = context.socket(zmq.ROUTER)
