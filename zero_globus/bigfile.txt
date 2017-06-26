@@ -1,0 +1,110 @@
+Adding line 0 in filename_test.0
+Adding line 1 in filename_test.0
+Adding line 2 in filename_test.0
+A_test.0
+Adding line 27 in filename_test.0
+Adding line 28 in filename_test.0
+Adding line 29 in filename_test.0
+Adding line 30 in filename_test.0
+Adding line 31 in filename_test.0
+Adding line 32 in filename_test.0
+Adding line 33 in filename_test.0
+Adding line 34 in filename_test.0
+Adding line 35 in filename_test.0
+Adding line 36 in filename_test.0
+Adding line 37 in filename_test.0
+Adding line 38 in filename_test.0
+Adding line 39 in filename_test.0
+Adding line 40 in filename_test.0
+Adding line 41 in filename_test.0
+Adding line 42 in filename_test.0
+Adding line 43 in filename_test.0
+Adding line 44 in filename_test.0
+Adding line 45 in filename_test.0
+Adding line 46 in filename_test.0
+Adding line 47 in filename_test.0
+Adding line 48 in filename_test.0
+Adding line 49 in filename_test.0
+Adding line 50 in filename_test.0
+Adding line 51 in filename_test.0
+Adding line 52 in filename_test.0
+Adding line 53 in filename_test.0
+Adding line 54 in filename_test.0
+Adding line 55 in filename_test.0
+Addingdding line 3 in filename_test.0
+Adding line 4 in filename_test.0
+Adding line 5 in filename_test.0
+Ad line 56 in filename_test.0
+Adding line 57 in filename_test.0
+Adding line 58 in filename_test.0
+Adding line 59 in filename_test.0
+Adding line 60 in filename_test.0
+Adding line 61 in filename_test.0
+Adding line 62 in filename_test.0
+Adding line 63 in filename_test.0
+Adding line 64 in filename_test.0
+Adding line 65 in filename_test.0
+Adding line 66 in filename_test.0
+Adding line 67 in filename_test.0
+Adding line 68 in filename_test.0
+Adding line 69 in filename_test.0
+Adding line 70 in filename_test.0
+Adding line 71 in filename_test.0
+Adding line 72 in filename_test.0
+Adding line 73 in filename_test.0
+Adding line 74 in filename_test.0
+Adding line 75 in filename_test.0
+Adding line 76 in filename_test.0
+Adding line 77 in filename_test.0
+Adding line 78 in filename_test.0
+Adding line 79 in filename_test.0
+Adding line 80 in filename_test.0
+Adding line 81 in filename_test.0
+Adding line 82 in filename_test.0
+Adding line 83 in filename_test.0
+Adding line 84 in filename_test.0
+Adding line 85 in fiding line 6 in filename_test.0
+Adding line 7 in filename_test.0
+Adding line 8 in filename_test.0
+Addlename_test.0
+Adding line 86 in filename_test.0
+Adding line 87 in filename_test.0
+Adding line 88 in filename_test.0
+Adding line 89 in filename_test.0
+Adding line 90 in filename_test.0
+Adding line 91 in filename_test.0
+Adding line 92 in filename_test.0
+Adding line 93 in filename_test.0
+Adding line 94 in filename_test.0
+Adding line 95 in filename_test.0
+Adding line 96 in filename_test.0
+Adding line 97 in filename_test.0
+Adding line 98 in filename_test.0
+Adding line 99 in filename_test.0
+ing line 9 in filename_test.0
+Adding line 10 in filename_test.0
+Adding line 11 in filename_test.0
+Adding line 12 in filename_test.0
+Adding line 13 in filename_test.0
+Adding line 14 in filename_test.0
+Adding line 15 in filename_test.0
+Adding line 16 in filename_test.0
+Adding line 17 in filename_test.0
+Adding line 18 in filename_test.0
+Adding line 19 in filename_test.0
+Adding line 20 in filename_test.0
+Adding line 21 in filename_test.0
+Adding line 22 in filename_test.0
+Adding line 23 in filename_test.0
+Adding line 24 in filename_test.0
+Adding line 25 in filename_test.0
+Adding line 26 in filename#!/bin/bash
+
+
+for i in {1..11}
+do
+    rm filename.$i$i$i*
+    rm filename.$i$i*
+    rm filename.$i*
+done
+#rm filename_test.*
