@@ -22,9 +22,9 @@ from os import makedirs
 def service():
     print 'you are in globus_transfer script'
 
-def transfer():
-
-    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZTTTZAAAAAAAFF9XjDP2sV58A1aUJR0zGtek1uIZthNB_ZHdeXv-Q25_rz9i9B8gD49TtGndxTBEN02lj')
+def transfer(files):
+    print("Globus transfer will begin")
+    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZVQaIAAAAAAAFF9UYsFpwjGVSYz2Q8vQ4uWn__br9Ixb6Qp__0MieFjOYIBw7ReS8rjxQtKM4HcS9T0-q')
     tc = globus_sdk.TransferClient(token_authorizer)
     #UUID can be found at your endpoint at globus or through tokens.globus.org
     #endpoints need to be established before transfer data
@@ -33,7 +33,8 @@ def transfer():
     source_endpoint_id = '2b5e59d2-409e-11e7-bd30-22000b9a448b'#ubuntu-vm
     # source_endpoint_id = raw_input('Input source endpoint UUID: ')
     #destination path
-    source_path = '/home/parallels/stream_transfer/test_files/'
+    #source_path = '/home/parallels/stream_transfer/test_files/'
+    source_path = '/home/parallels/stream_transfer/zero_globus/test_files/'
     #destination path
     destination_path = '/~/'
     #Using my sample UUID from globus tutorial
@@ -55,6 +56,7 @@ def transfer():
 
     submit_result = tc.submit_transfer(tdata)
     print("Task ID:", submit_result["task_id"])
+    #print("Completion time:", submit_result["completion_time"])
 
     #setup of the transfer, submits as a https post request
     #transfer_data = TransferData(transfer_client=tc,
@@ -83,28 +85,45 @@ def transfer():
 
     #deleting file after transfer
     if status == "SUCCEEDED":
-        #item = []
+
         print("File transfer SUCCEEDED, will delete file from local directory now")
         r = tc.task_list(num_results=10, filter="type:TRANSFER,DELETE")
+        #print("this is r:",r)
         for i, item in enumerate(r):
+            #print("printing each item",item)
             p = re.compile(r'\W+')
-            print(item['request_time'])
-            print(item['completion_time'])
+            taski = submit_result["task_id"]
+            #print ("this is the task id:", taski)
+            current_id = p.split(item['task_id'])
+            #print("this is the curren_id:",current_id)
+            #if taski == current_id:
+            #print("current id:",current_id)
+            #fit = get_task(),task["request_time"]
+            #item = p.split(item['task_id'])
+            #ct = p.split(item['completion_time'])
+            #print("this is completion time:",ct)
+            #print("Task ID num2:", submit_result["completion_time"])
+            #ct = submit_result[u'completion_time']
+            #print("this is the completion_Time",ct)
+            #print("Completion time from submit_result:", submit_result["completion_time"])
+            #print(item['request_time'])
+            #print(item['completion_time'])
             ct = p.split(item['completion_time'])
             rt = p.split(item['request_time'])
             hr = int(ct[3])-int(rt[3])
             mn = int(ct[4])-int(rt[4])
             sec = int(ct[5])-int(rt[5])
-            print ("duration:",mn)
+            print ("Duration of time:%i:%i:%i"% (hr,mn,sec))
 
             """rt = int(item['request_time'])
             ct = int(item['completion_time'])
             duration = ct - rt"""
             #print('Duration time:',duration)
         #print(item['effective_bytes_per_second'])
-        files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+        #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+        #files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
         for f in files:
-            os.remove(f) 
+            os.remove(f)
 
 
         #print("Files have been transferred and deleted")
@@ -120,5 +139,6 @@ if __name__ == "__main__":
         #my_file = Path("/home/parallels/globus-sdk-python/globusnram/test_files/")
         #if my_file.is_file():
         #    transfer()
-        files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-        if len(files) > 0: transfer()
+        #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+        files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
+        if len(files) > 0: transfer(files)
