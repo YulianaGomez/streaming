@@ -23,32 +23,37 @@ Date Last Modified:   June 25, 2017
 
 def split_file(files):
     #dest_path = "/home/parallels/stream_transfer/zero_globus/destination/"
-    dest_path = "/Users/yzamora/streaming/zero_globus/destination/"
-    chunksize = 10000
-    offset = 0 
+    dest_path = "/home/parallels/stream_transfer/zero_globus/test_files/"
+    chunksize = 100
+    offset = 0
     iter = 0
+    #print("Splitting data into bytes will begin")
     for curFile in files:
-    	cfile = open(curFile, "r")
+    	cfile = open(curFile, "rb")
     	data = cfile.read(chunksize)
-    	while True:
-            if data!='':
-    	        #Taking specific chunk of data
-    	        cfile.seek(offset,os.SEEK_SET)
-    	        data = cfile.read(chunksize)
-                #Putting specific chunk size of data into file
-                iter += 1
-                fn = dest_path+"filename."+str(iter)
-                f = open(fn,'wb')
-                f.write(data)
-                print("Creating file=" + fn)
-                offset+=len(data)
-            
+        #print("Currently in split_stream in for loop")
+    	while data!='':
+            #if data!='':
+            print("Getting specific byte size of file and putting into file")
+	        #Taking specific chunk of data
+            cfile.seek(offset,os.SEEK_SET)
+            data = cfile.read(chunksize)
+            #Putting specific chunk size of data into file
+            iter += 1
+            fn = dest_path+"filename."+str(iter)
+            f = open(fn,'wb')
+            print("Putting data into file")
+            f.write(data)
+            print("Creating file=" + fn)
+            print("Incrementing offset")
+            print("%i bytes transferred into filename: %s"%(offset,fn))
+            offset+=len(data)
+            if data=='':
+                print("End of final file transfer")
+                #break
+            f.close()
+            #os._exit(0)
 
-        if data=='':
-            print("End of final file transfer; File=" + fn)
-
-        f.close()
-        print("%i bytes transferred"%offset)
     		#Read chunk of data from file
 
 
@@ -59,8 +64,7 @@ def split_file(files):
 
 if __name__=='__main__':
     while True:
-        files = glob.glob('/Users/yzamora/streaming/zero_globus/test_files/*')
+        files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files2/*')
         if len(files)>0:
             split_file(files)
 ###################################
-
