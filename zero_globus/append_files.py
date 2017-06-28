@@ -8,7 +8,7 @@ import subprocess
 ##-------------------------------                -----------------------------##
 ##============================================================================##
 '''
-Purpose:              ...
+Purpose:              Append files created from split_stream
 
 Author:               Yuliana Zamora
 Email:
@@ -62,7 +62,7 @@ def get_parent_path(fullpath):
 ## Just keep looping to check for new files:
 #while True:
 
-pathlist = glob.glob('/Users/yzamora/streaming/zero_globus/destination/*')
+pathlist = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
 
 # Create dictionary of known parent files you are "streaming":
 pathdict = {}
@@ -71,14 +71,14 @@ for fullpath in pathlist:
     # Call get_parent_path() to get the 'parent' path
     #     ex: fullpath = /home/file.0 -> path = /home/file
     path = get_parent_path(fullpath)
-    
+
     # Ignore files that do not have a .* at the end:
-    if path == None:   continue
-    
+    if path == None: continue
+
     # Exit code if a file called 'DONE' exists
     # (This is a way to stop the code nicely)
     if path == 'DONE': sys.exit(0)
-    
+
     # Add a 'ParentPath' object to the dictionary for this
     # specific 'parent' path:
     if not (path in pathdict): pathdict[path] = ParentPath(path)
