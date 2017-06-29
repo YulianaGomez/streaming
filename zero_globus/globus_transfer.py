@@ -7,6 +7,7 @@ import globus_sdk
 import time
 import os.path
 import re
+import datetime
 #os.path.isfile(fname)
 from pathlib import Path
 from os import makedirs
@@ -24,7 +25,7 @@ def service():
 
 def transfer(files):
     print("Globus transfer will begin")
-    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZVQaIAAAAAAAFF9UYsFpwjGVSYz2Q8vQ4uWn__br9Ixb6Qp__0MieFjOYIBw7ReS8rjxQtKM4HcS9T0-q')
+    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZV_TiAAAAAAAFF9WbBdBDumibvaGFee8r678Ukbdf-OnQp64UxWLhW08WS8yLvO8U399pn083_bRzP521')
     tc = globus_sdk.TransferClient(token_authorizer)
     #UUID can be found at your endpoint at globus or through tokens.globus.org
     #endpoints need to be established before transfer data
@@ -85,40 +86,55 @@ def transfer(files):
 
     #deleting file after transfer
     if status == "SUCCEEDED":
+        end_time = datetime.datetime.utcnow()
+        start_time = end_time - datetime.timedelta(minutes=200)
+
+        #limit = response objects
+#        data = tc.task_list(filter="type:TRANSFER,DELETE/request_time:%s,%s"
+#        % (start_time, end_time), limit=5)
 
         print("File transfer SUCCEEDED, will delete file from local directory now")
-        r = tc.task_list(num_results=10, filter="type:TRANSFER,DELETE")
-        #print("this is r:",r)
-        for i, item in enumerate(r):
-            #print("printing each item",item)
-            p = re.compile(r'\W+')
-            taski = submit_result["task_id"]
-            #print ("this is the task id:", taski)
-            current_id = p.split(item['task_id'])
-            #print("this is the curren_id:",current_id)
-            #if taski == current_id:
-            #print("current id:",current_id)
-            #fit = get_task(),task["request_time"]
-            #item = p.split(item['task_id'])
-            #ct = p.split(item['completion_time'])
-            #print("this is completion time:",ct)
-            #print("Task ID num2:", submit_result["completion_time"])
-            #ct = submit_result[u'completion_time']
-            #print("this is the completion_Time",ct)
-            #print("Completion time from submit_result:", submit_result["completion_time"])
-            #print(item['request_time'])
-            #print(item['completion_time'])
-            ct = p.split(item['completion_time'])
-            rt = p.split(item['request_time'])
-            hr = int(ct[3])-int(rt[3])
-            mn = int(ct[4])-int(rt[4])
-            sec = int(ct[5])-int(rt[5])
-            print ("Duration of time:%i:%i:%i"% (hr,mn,sec))
+        r = tc.task_list(num_results=1, filter="type:TRANSFER,DELETE")
+        all_data = []
+            new_event = {}
+            new_event['completion_time'] = d['completion_time']
+            new_event['request_time'] = d['request_time']
+            new_event['task_id'] = d['task_id']
+            all_data.append(new_event)
 
-            """rt = int(item['request_time'])
-            ct = int(item['completion_time'])
-            duration = ct - rt"""
-            #print('Duration time:',duration)
+        print (all_data)
+        #print("this is r:",r)
+
+        """for i, item in enumerate(r):
+        #print("printing each item",item)
+        p = re.compile(r'\W+')
+        #taski = submit_result["task_id"]
+        #print ("this is the task id:", taski)
+        current_id = p.split(item['task_id'])
+        #print("this is the curren_id:",current_id)
+        #if taski == current_id:
+        #print("current id:",current_id)
+        #fit = get_task(),task["request_time"]
+        #item = p.split(item['task_id'])
+        #ct = p.split(item['completion_time'])
+        #print("this is completion time:",ct)
+        #print("Task ID num2:", submit_result["completion_time"])
+        #ct = submit_result[u'completion_time']
+        #print("this is the completion_Time",ct)
+        #print("Completion time from submit_result:", submit_result["completion_time"])
+        #print(item['request_time'])
+        #print(item['completion_time'])
+        ct = p.split(item['completion_time'])
+        rt = p.split(item['request_time'])
+        hr = int(ct[3])-int(rt[3])
+        mn = int(ct[4])-int(rt[4])
+        sec = int(ct[5])-int(rt[5])
+        print ("Duration of time:%i:%i:%i"% (hr,mn,sec))"""
+
+        """rt = int(item['request_time'])
+        ct = int(item['completion_time'])
+        duration = ct - rt"""
+        #print('Duration time:',duration)
         #print(item['effective_bytes_per_second'])
         #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
         #files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
