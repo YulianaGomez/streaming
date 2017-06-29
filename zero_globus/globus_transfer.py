@@ -96,40 +96,20 @@ def transfer(files):
         print("File transfer SUCCEEDED, will delete file from local directory now")
         r = tc.task_list(num_results=1, filter="type:TRANSFER,DELETE")
         all_data = []
+        for d in r.data:
             new_event = {}
             new_event['completion_time'] = d['completion_time']
             new_event['request_time'] = d['request_time']
             new_event['task_id'] = d['task_id']
             all_data.append(new_event)
 
-        print (all_data)
-        #print("this is r:",r)
-
-        """for i, item in enumerate(r):
-        #print("printing each item",item)
-        p = re.compile(r'\W+')
-        #taski = submit_result["task_id"]
-        #print ("this is the task id:", taski)
-        current_id = p.split(item['task_id'])
-        #print("this is the curren_id:",current_id)
-        #if taski == current_id:
-        #print("current id:",current_id)
-        #fit = get_task(),task["request_time"]
-        #item = p.split(item['task_id'])
-        #ct = p.split(item['completion_time'])
-        #print("this is completion time:",ct)
-        #print("Task ID num2:", submit_result["completion_time"])
-        #ct = submit_result[u'completion_time']
-        #print("this is the completion_Time",ct)
-        #print("Completion time from submit_result:", submit_result["completion_time"])
-        #print(item['request_time'])
-        #print(item['completion_time'])
-        ct = p.split(item['completion_time'])
-        rt = p.split(item['request_time'])
-        hr = int(ct[3])-int(rt[3])
-        mn = int(ct[4])-int(rt[4])
-        sec = int(ct[5])-int(rt[5])
-        print ("Duration of time:%i:%i:%i"% (hr,mn,sec))"""
+            p = re.compile(r'\W+')
+            ct = p.split(new_event['completion_time'])
+            rt = p.split(new_event['request_time'])
+            hr = int(ct[3])-int(rt[3])
+            mn = int(ct[4])-int(rt[4])
+            sec = int(ct[5])-int(rt[5])
+            print ("Duration of time:%i:%i:%i"% (hr,mn,sec))
 
         """rt = int(item['request_time'])
         ct = int(item['completion_time'])
