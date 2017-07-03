@@ -9,15 +9,18 @@ import glob
 import argparse
 import zmq
 from Queue import Queue
+import threading
 
 import globus_transfer
 import client_model
 import streamonefile
 import split_stream
-#mport create_queue
+import config
+import create_queue
+
 
 ##============================================================================##
-##------------------------------- stream_queue.py -----------------------------##
+##------------------------------- stream_queue.py ----------------------------##
 ##============================================================================##
 '''
 Purpose:              Common app for ZMQ and Globus. User can choose how many
@@ -26,7 +29,7 @@ Purpose:              Common app for ZMQ and Globus. User can choose how many
 Author:               Yuliana Zamora
 Email:                yzamora@uchicago.edu
 Date Created:         June 30, 2017
-Date Last Modified:   June 30, 2017
+Date Last Modified:   July 2, 2017
 '''
 
 ##============================================================================##
@@ -111,7 +114,7 @@ def stream_child():
 ##--------------------------------create_q()----------------------------------##
 ##============================================================================##
 #Creating queue using random number generator
-def create_queue():
+"""def create_queue():
     #Creating queue
     q = Queue(0)
     print("Queue is being created")
@@ -121,7 +124,7 @@ def create_queue():
         #rn = random.random()
         q.put(rn)
         while not q.empty():
-            q.get()
+            q.get()"""
 
 
 
@@ -135,6 +138,7 @@ def create_queue():
 ################################################################################
 
 if __name__ == "__main__":
+
     #Parse Input
     #Flags corresponding to different inputs and configurations
     parser = argparse.ArgumentParser()
@@ -152,6 +156,7 @@ if __name__ == "__main__":
     globus = args.globus
     client = args.client
     rand = args.rand
+
     #If -c chosen, client side of ZMQ will run
     ##============================================================================##
     ##------------------------------ ZMQ CLIENT-----------------------------------##
@@ -164,7 +169,22 @@ if __name__ == "__main__":
     ##============================================================================##
     elif globus and rand:
         print("You are running GLOBUS with a random number generator")
-        create_queue()
+        pid = os.fork()
+        if pid == 0:
+            create_queue.qcreate()
+            os.exit(0)
+        pid2 = os.fork()
+        if pid2 == 0:
+            create_queue.put_infile()
+            os.exit(0)
+        while True:
+            files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
+            if len(files) > 0: globus_transfer.transfer(files)
+
+        #t1 = threading.Thread(target=create_queue.qcreate)
+        #t2 = threading.Thread(target=create_queue.put_infile)
+        #t1.start()
+        #t2.start()
 
     ##============================================================================##
     ##-------------------------------GLOBUS---------------------------------------##
@@ -193,7 +213,7 @@ if __name__ == "__main__":
                 os._exit(0)
             while True:
                 files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
-                if len(files) > 0: globus_transfer.transfer()
+                if len(files) > 0: globus_transfer.transfer(files)
 
         #User can input 0 for streaming files and int for specific number
         else:
