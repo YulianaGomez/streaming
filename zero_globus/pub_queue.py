@@ -26,7 +26,7 @@ Date Last Modified:   July 5, 2017
 ##============================================================================##
 
 def transfer():
-    #print("in tranfers loop")
+    print("in tranfers script")
     # Prepare context & publisher - must set up context first
     t0 = time.time()
     context = zmq.Context()
@@ -40,7 +40,6 @@ def transfer():
     msg = syncservice.recv()
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
-    q = MyConfig().q
     #--------------------CREATING QUEUE TO TRANSFER----------------------------#
     zq = Queue.Queue()
     for rn in xrange(15):
@@ -51,27 +50,19 @@ def transfer():
     #for f in files:
     #--------------------------INITIATE ZMQ PUB--------------------------------#
     print ("Initiating zmq transfer")
-    #print q.get()
-    #size = os.stat(f).st_size
-    #print 'File size:',size
-    #target = open(f, 'rb')
-    #ff = target.read(size) #number of bytes to read from file
+
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
-    #sendfile = f +' '+ ff
-    #item_pub = sendfile.split()
-    #item_name = item_pub[0]
-    #print 'name from pub side = ',item_name
+
     while not zq.empty():
-    #print q.get()
-        #print zq.get()
-    #for r in xrange(10):
         v = zq.get()
-        #print q.get()
         publisher.send_multipart((str(f),str(v)))
-        print "sent msg from pub side"
+        print "Msg sent from pub side"
+    msg = syncservice.recv()
+    print "Received request: ", msg
+    syncservice.send("Message from 10111")
 
     """Creating second handshake sequence"""
-
+    """"
     #print 'Finished sending data, waiting for second handshake'
     syncservice = context.socket(zmq.REP)
 
@@ -81,9 +72,10 @@ def transfer():
     #print '...still waiting for handshake'
     msg = syncservice.recv() ##currently not getting past here
 
-    #print "Received request: ", msg
-    syncservice.send("Finished sending")
-    #print "past sent part"
+    print "Received request: ", msg
+    syncservice.recv()"""
+    print("print finished")
+    #print "past sent part""""
     t1 = time.time()
     total = t1-t0
     print ("total time to transfer: %f seconds"%total)
