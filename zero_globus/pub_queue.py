@@ -42,9 +42,9 @@ def transfer():
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
     #--------------------CREATING QUEUE TO TRANSFER----------------------------#
-    """zq = Queue.Queue() ##works with queue in script
+    zq = Queue.Queue() ##works with queue in script
     for rn in xrange(1000):
-        zq.put(rn)"""
+        zq.put(rn)
 
     """t1 = threading.Thread(target=create_queue.qcreate())
     t1.start()
@@ -52,7 +52,7 @@ def transfer():
     q = MyConfig().q
     #print q.get()
     time.sleep(2)"""
-    q = MyConfig().q
+    #q = MyConfig().q
     #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
     #for f in files:
     #--------------------------INITIATE ZMQ PUB--------------------------------#
@@ -60,9 +60,12 @@ def transfer():
 
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
     t0 = time.time()
-    while not q.empty():
-        v = q.get()
+    while not zq.empty():
+        v = zq.get()
+        #for l in range(1,10):
+        #v = l
         publisher.send_multipart((str(f),str(v)))
+        #print v
         #print "Msg sent from pub side"
     msg = syncservice.recv()
     print "Received request: ", msg

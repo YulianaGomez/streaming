@@ -15,7 +15,7 @@ Purpose:              ZMQ SUB working with queue as source of data for transfer
 Author:               Yuliana Zamora
 Email:                yzamora@uchicago.edu
 Date Created:         June July 3, 2017
-Date Last Modified:   July 5, 2017
+Date Last Modified:   July 6, 2017
 '''
 
 ##============================================================================##
@@ -67,7 +67,7 @@ def sub():
             print 'close\n'
         syncclient.send("Finished writing")
         syncclient.recv()
-        break
+        #break
         #f.close()
 
 
