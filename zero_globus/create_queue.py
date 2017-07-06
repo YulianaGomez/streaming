@@ -26,17 +26,15 @@ def qcreate():
     #print("Queue is being created")
     q = MyConfig().q
     print("In queue child thread")
-    for rn in xrange(100):
+    for rn in xrange(1000):
     #while True:
         #rn = random.random()
         q.put(rn)
-    #print (q)
+        #print ("Put %i in queue", rn)
+    print("Finished creating queue")
+    #os._exit(0)
 
-#Returns item in queue
-def qget():
-    q = MyConfig().q
-    while not q.empty():
-        print"this is second function:", q.get()
+
 
 #Takes items from queue and puts in file of specific size
 def put_infile():
@@ -63,10 +61,15 @@ def put_infile():
             #f.close()
         filnum += 1
     print "Outside of while loop"
+    os._exit(0)
 
-t1 = threading.Thread(target=qcreate)
-t2 = threading.Thread(target=put_infile)
-#t3 = threading.Thread(target=qget)
-t1.start()
-t2.start()
-#t3.start()
+def runforglob():
+    t1 = threading.Thread(target=qcreate)
+    t2 = threading.Thread(target=put_infile)
+    #t3 = threading.Thread(target=qget)
+    t1.start()
+    t2.start()
+    #t3.start()
+
+if __name__ == "__main__":
+    runforglob()

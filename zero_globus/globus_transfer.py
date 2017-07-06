@@ -25,7 +25,7 @@ def service():
 
 def transfer(files):
     print("Globus transfer will begin")
-    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZV_TiAAAAAAAFF9WbBdBDumibvaGFee8r678Ukbdf-OnQp64UxWLhW08WS8yLvO8U399pn083_bRzP521')
+    token_authorizer = AccessTokenAuthorizer(access_token = 'AQBZXNu8AAAAAAAFF9V3ePa7fHNGjBlfFpY7FJcrg2JqZa_R-iowMQII6HVsvm5DTKlorRY4Wyk9rN1tzI0K')
     tc = globus_sdk.TransferClient(token_authorizer)
     #UUID can be found at your endpoint at globus or through tokens.globus.org
     #endpoints need to be established before transfer data

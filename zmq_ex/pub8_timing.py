@@ -57,7 +57,7 @@ def transfer():
         print 'name from pub side = ',item_name
         publisher.send(sendfile)
         print 'sent msg from pub side'
-        os.remove(f)
+        #os.remove(f)
         #print('Finished removing files from source directory')
         #target.close()
         #time.sleep(10)

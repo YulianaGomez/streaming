@@ -14,14 +14,14 @@ import zmq
 from zhelpers import socket_set_hwm, zpipe
 
 DEFAULT_CHUNK_SIZE=1024
-#DEFAULT_OUTPUT_DIR="/home/parallels/yzamora/streaming/destination/"
-#DEFAULT_DEST_ADDR="34.207.160.51"
-DEFAULT_OUTPUT_DIR - "/home/yzamora/streaming/destination"
-DEFAULT_DEST_ADDR ="140.221.68.131"
+DEFAULT_OUTPUT_DIR="/home/parallels/stream_transfer/zero_globus/destination/"
+DEFAULT_DEST_ADDR="34.207.160.51"
+#DEFAULT_OUTPUT_DIR - "/home/yzamora/streaming/destination"
+#DEFAULT_DEST_ADDR ="140.221.68.131"
 DEFAULT_DEST_PORT="10120"
 
 def client(chunk_size, output_dir, dest_addr, dest_port):
-    destroot = output_dir #my machine 
+    destroot = output_dir #my machine
 
     ctx = zmq.Context()
     dealer = ctx.socket(zmq.DEALER)
@@ -49,10 +49,10 @@ def client(chunk_size, output_dir, dest_addr, dest_port):
        f = open(fn, 'wb')
        print("Creating file=" + fn)
 
-       # chunk loop 
+       # chunk loop
        while True:
            dealer.send_multipart([
-              b"transfer", 
+              b"transfer",
               b"%i" %total
            ])
            try:
@@ -65,7 +65,7 @@ def client(chunk_size, output_dir, dest_addr, dest_port):
                        raise
                [data] = msg
                #print("Received msg size=" + str(len(data)))
-   
+
                if data=='':
                   print("End of file transfer; File=" + fn)
                   break
@@ -87,7 +87,7 @@ def main():
    if len(sys.argv)<5:
       print("Usage: python " + sys.argv[0] + " <chunk-size="+str(DEFAULT_CHUNK_SIZE) + "> <output-dir="+ DEFAULT_OUTPUT_DIR + "> <dest-address=" + DEFAULT_DEST_ADDR + "> <dest-port=" + DEFAULT_DEST_PORT + ">")
       sys.exit(0)
-   #CALL: python client_model.py 0 "" "" "" for default setting 
+   #CALL: python client_model.py 0 "" "" "" for default setting
    chunk_size = int(sys.argv[1])
    if chunk_size==0: chunk_size=DEFAULT_CHUNK_SIZE
 

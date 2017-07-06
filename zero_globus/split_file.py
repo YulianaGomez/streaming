@@ -23,9 +23,9 @@ Date Last Modified:   June 25, 2017
 
 def split_file(files):
     #dest_path = "/home/parallels/stream_transfer/zero_globus/destination/"
-    dest_path = "/Users/yzamora/streaming/zero_globus/destination/"
+    dest_path = "/home/parallels/stream_transfer/zero_globus/destination/"
     chunksize = 100
-    offset = 0 
+    offset = 0
     iter = 0
     for curFile in files:
     	cfile = open(curFile, "r")
@@ -41,7 +41,7 @@ def split_file(files):
             f.write(data)
             print("Creating file=" + fn)
             offset+=len(data)
-            
+
 
         if data=='':
             print("End of final file transfer; File=" + fn)
@@ -57,8 +57,7 @@ def split_file(files):
 #################MAIN METHOD#########################
 
 if __name__=='__main__':
-	files = glob.glob('/Users/yzamora/streaming/zero_globus/test_files/*')
+	files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
 	if len(files)>0:
 	    split_file(files)
 ###################################
-

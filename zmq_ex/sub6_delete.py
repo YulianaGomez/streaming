@@ -42,14 +42,15 @@ print("About to receive")
 #while True:
 #/home/parallels/stream_transfer/test_files/test1.txt
 
-#files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-files = glob.glob('/tmp/ramdisk/*')
+files = glob.glob('/home/parallels/stream_transfer/test_files/*')
+#files = glob.glob('/tmp/ramdisk/*')
 #filename = 'test1.txt'
 
 for filename in files:
+    print "In for loop"
     destfilename = ntpath.basename(filename)
     #filename = 'personnel.db'
-#destfilename = 'test1.txt'
+    #destfilename = 'test1.txt'
     destfile = '/home/parallels/stream_transfer/destination/' + destfilename
 
     #msg = subscriber.recv(313344)

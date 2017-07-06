@@ -172,9 +172,10 @@ if __name__ == "__main__":
         print("You are running ZMQ server/pub side with a queue")
         t1 = threading.Thread(target=create_queue.qcreate())
         t1.start()
+        #create_queue.qcreate()
         print "Out of create_queue loop"
         q = MyConfig().q
-        #print q.get()
+        print q.get()
         time.sleep(2)
         pub_queue.transfer()
     elif client and useq:
