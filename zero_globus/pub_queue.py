@@ -7,6 +7,7 @@ import time
 import create_queue
 from config import MyConfig
 import Queue
+import threading
 
 
 ##============================================================================##
@@ -28,7 +29,7 @@ Date Last Modified:   July 5, 2017
 def transfer():
     print("in tranfers script")
     # Prepare context & publisher - must set up context first
-    t0 = time.time()
+    #t0 = time.time()
     context = zmq.Context()
     publisher = context.socket(zmq.PUB)
     publisher.bind("tcp://127.0.0.1:10111")
@@ -41,22 +42,28 @@ def transfer():
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
     #--------------------CREATING QUEUE TO TRANSFER----------------------------#
-    zq = Queue.Queue()
-    for rn in xrange(15):
-        zq.put(rn)
+    """zq = Queue.Queue() ##works with queue in script
+    for rn in xrange(1000):
+        zq.put(rn)"""
 
-
+    """t1 = threading.Thread(target=create_queue.qcreate())
+    t1.start()
+    print "Out of create_queue loop"
+    q = MyConfig().q
+    #print q.get()
+    time.sleep(2)"""
+    q = MyConfig().q
     #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
     #for f in files:
     #--------------------------INITIATE ZMQ PUB--------------------------------#
     print ("Initiating zmq transfer")
 
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
-
-    while not zq.empty():
-        v = zq.get()
+    t0 = time.time()
+    while not q.empty():
+        v = q.get()
         publisher.send_multipart((str(f),str(v)))
-        print "Msg sent from pub side"
+        #print "Msg sent from pub side"
     msg = syncservice.recv()
     print "Received request: ", msg
     syncservice.send("Message from 10111")

@@ -11,12 +11,15 @@ import zmq
 from Queue import Queue
 import threading
 
+from config import MyConfig
 import globus_transfer
 import client_model
 import streamonefile
 import split_stream
 import config
 import create_queue
+import pub_queue
+import sub_queue
 
 
 ##============================================================================##
@@ -98,7 +101,7 @@ def stream_child():
     try:
         pid = os.fork()
         if pid == 0:
-            #Child thread calls function
+            #Chilff thread calls function
             mult_files(file_number)
             os._exit(0)
         else:
@@ -109,25 +112,6 @@ def stream_child():
     except OSError, e:
         print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
         sys.exit(1)
-
-##============================================================================##
-##--------------------------------create_q()----------------------------------##
-##============================================================================##
-#Creating queue using random number generator
-"""def create_queue():
-    #Creating queue
-    q = Queue(0)
-    print("Queue is being created")
-    print("In queue child thread")
-    for rn in xrange(10):
-    #while True:
-        #rn = random.random()
-        q.put(rn)
-        while not q.empty():
-            q.get()"""
-
-
-
 
 
 
@@ -145,7 +129,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--globus", dest="globus", action = "store_true", default=False)
     parser.add_argument("-s", "--server", dest="server", action = "store_true", default=False)
     parser.add_argument("-c", "--client", dest="client", action = "store_true", default=False)
-    parser.add_argument("-r", "--rand", dest="rand", action = "store_true", default=False)
+    parser.add_argument("-q", "--useq", dest="useq", action = "store_true", default=False)
 
     #parser.add_argument("-m", "--many", dest="many")
     #parser.add_argument("-o", "--one", dest="one")
@@ -155,7 +139,7 @@ if __name__ == "__main__":
     server = args.server
     globus = args.globus
     client = args.client
-    rand = args.rand
+    useq = args.useq
 
     #If -c chosen, client side of ZMQ will run
     ##============================================================================##
@@ -167,8 +151,8 @@ if __name__ == "__main__":
     ##============================================================================##
     ##-------------------------------Random BYTES---------------------------------##
     ##============================================================================##
-    elif globus and rand:
-        print("You are running GLOBUS with a random number generator")
+    elif globus and useq:
+        print("You are running GLOBUS with a queue")
         pid = os.fork()
         if pid == 0:
             create_queue.qcreate()
@@ -181,11 +165,21 @@ if __name__ == "__main__":
             files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
             if len(files) > 0: globus_transfer.transfer(files)
 
-        #t1 = threading.Thread(target=create_queue.qcreate)
-        #t2 = threading.Thread(target=create_queue.put_infile)
-        #t1.start()
-        #t2.start()
-
+    ##============================================================================##
+    ##-------------------------------ZMQ with QUEUE-------------------------------##
+    ##============================================================================##
+    elif server and useq:
+        print("You are running ZMQ server/pub side with a queue")
+        t1 = threading.Thread(target=create_queue.qcreate())
+        t1.start()
+        print "Out of create_queue loop"
+        q = MyConfig().q
+        #print q.get()
+        time.sleep(2)
+        pub_queue.transfer()
+    elif client and useq:
+        print("You are running ZMQ client/sub side with a queue")
+        sub_queue.sub()
     ##============================================================================##
     ##-------------------------------GLOBUS---------------------------------------##
     ##============================================================================##
