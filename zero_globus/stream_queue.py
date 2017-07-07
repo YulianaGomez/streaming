@@ -145,13 +145,13 @@ if __name__ == "__main__":
     ##============================================================================##
     ##------------------------------ ZMQ CLIENT-----------------------------------##
     ##============================================================================##
-    if client:
+    """if client:
         print "You are running the client side with ZeroMQ. Waiting for server to send msgs."
-        client_model.client(1024,"/home/parallels/stream_transfer/zero_globus/destination","34.207.160.51","10120")
+        client_model.client(1024,"/home/parallels/stream_transfer/zero_globus/destination","34.207.160.51","10120")"""
     ##============================================================================##
     ##-------------------------------Random BYTES---------------------------------##
     ##============================================================================##
-    elif globus and useq:
+    if globus and useq:
         print("You are running GLOBUS with a queue")
         pid = os.fork()
         if pid == 0:
@@ -170,17 +170,24 @@ if __name__ == "__main__":
     ##============================================================================##
     elif server and useq:
         print("You are running ZMQ server/pub side with a queue")
-        t1 = threading.Thread(target=create_queue.qcreate())
-        t1.start()
+        #t1 = threading.Thread(target=create_queue.qcreate())
+        #t1.start()
         #create_queue.qcreate()
         print "Out of create_queue loop"
-        q = MyConfig().q
-        print q.get()
-        time.sleep(2)
+        #q = MyConfig().q
+        #print q.get()
+        #time.sleep(2)
         pub_queue.transfer()
     elif client and useq:
         print("You are running ZMQ client/sub side with a queue")
         sub_queue.sub()
+    #If -c chosen, client side of ZMQ will run
+    ##============================================================================##
+    ##------------------------------ ZMQ CLIENT-----------------------------------##
+    ##============================================================================##
+    elif client:
+        print "You are running the client side with ZeroMQ. Waiting for server to send msgs."
+        client_model.client(1024,"/home/parallels/stream_transfer/zero_globus/destination","34.207.160.51","10120")
     ##============================================================================##
     ##-------------------------------GLOBUS---------------------------------------##
     ##============================================================================##

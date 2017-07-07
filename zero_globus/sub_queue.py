@@ -27,7 +27,16 @@ context = zmq.Context()
 syncclient = context.socket(zmq.REQ)
 syncclient.connect('tcp://127.0.0.1:10112')
 def sub():
+
+    
+    global_stop = False
+    context = zmq.Context()
+    syncclient = context.socket(zmq.REQ)
+    syncclient.connect('tcp://127.0.0.1:10112')
+
+
     print global_stop
+    print "In subscriber routine"
     #print("In sub script")
     context = zmq.Context()
     subscriber = context.socket(zmq.SUB)

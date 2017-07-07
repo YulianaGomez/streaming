@@ -27,7 +27,7 @@ Date Last Modified:   July 5, 2017
 ##============================================================================##
 
 def transfer():
-    print("in tranfers script")
+    print("in transfer script")
     # Prepare context & publisher - must set up context first
     #t0 = time.time()
     context = zmq.Context()
@@ -48,24 +48,22 @@ def transfer():
 
     t1 = threading.Thread(target=create_queue.qcreate())
     t1.start()
-    print "Out of create_queue loop"
+    #print "Out of create_queue loop"
     q = MyConfig().q
-    print q.get()
-    #time.sleep(2)
-    #q = MyConfig().q
-    #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
-    #for f in files:
+
     #--------------------------INITIATE ZMQ PUB--------------------------------#
     print ("Initiating zmq transfer")
 
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
     t0 = time.time()
     while not q.empty():
+    #for i in (1,5):
         v = q.get()
+        #v = "hello"
         #for l in range(1,10):
         #v = l
         publisher.send_multipart((str(f),str(v)))
-        #print v
+        print v
         #print "Msg sent from pub side"
     syncservice.recv()
     syncservice.send("Finished queue")
