@@ -42,16 +42,16 @@ def transfer():
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
     #--------------------CREATING QUEUE TO TRANSFER----------------------------#
-    zq = Queue.Queue() ##works with queue in script
+    """zq = Queue.Queue() ##works with queue in script
     for rn in xrange(1000):
-        zq.put(rn)
+        zq.put(rn)"""
 
-    """t1 = threading.Thread(target=create_queue.qcreate())
+    t1 = threading.Thread(target=create_queue.qcreate())
     t1.start()
     print "Out of create_queue loop"
     q = MyConfig().q
-    #print q.get()
-    time.sleep(2)"""
+    print q.get()
+    #time.sleep(2)
     #q = MyConfig().q
     #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
     #for f in files:
@@ -60,16 +60,18 @@ def transfer():
 
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
     t0 = time.time()
-    while not zq.empty():
-        v = zq.get()
+    while not q.empty():
+        v = q.get()
         #for l in range(1,10):
         #v = l
         publisher.send_multipart((str(f),str(v)))
         #print v
         #print "Msg sent from pub side"
+    syncservice.recv()
+    syncservice.send("Finished queue")
     msg = syncservice.recv()
-    print "Received request: ", msg
-    syncservice.send("Message from 10111")
+    print "Received request2: ", msg
+
 
     """Creating second handshake sequence"""
     """"

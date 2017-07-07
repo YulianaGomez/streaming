@@ -5,6 +5,7 @@ import time
 import sys
 import glob
 import ntpath
+import threading
 
 ##============================================================================##
 ##------------------------------- sub.py -------------------------------------##
@@ -21,8 +22,13 @@ Date Last Modified:   July 6, 2017
 ##============================================================================##
 ##-------------------------------- SUB() -------------------------------------##
 ##============================================================================##
+global_stop = False
+context = zmq.Context()
+syncclient = context.socket(zmq.REQ)
+syncclient.connect('tcp://127.0.0.1:10112')
 def sub():
-    print("In sub script")
+    print global_stop
+    #print("In sub script")
     context = zmq.Context()
     subscriber = context.socket(zmq.SUB)
     #subscriber.connect("tcp://127.0.0.1:10111")
@@ -32,8 +38,8 @@ def sub():
 
     ####CREATING HANDSHAKE sequence############
     #synchronize with publisher
-    syncclient = context.socket(zmq.REQ)
-    syncclient.connect('tcp://127.0.0.1:10112')
+    #syncclient = context.socket(zmq.REQ)
+    #syncclient.connect('tcp://127.0.0.1:10112')
     #msg = subscriber.recv(313344)
     #send a synchronization request
     syncclient.send('This is a message from subscriber')
@@ -52,25 +58,40 @@ def sub():
     #filename = 'test1.txt'
 
     #for filename in files:
-    while True:
-        destfile = '/home/parallels/stream_transfer/destination/'
+    destfile = '/home/parallels/stream_transfer/destination/'
+    fn = destfile+"test.1"
+    t1 = threading.Thread(target=listen)
+    t1.start()
+    with open(fn,'a') as f:
+        while not global_stop:
+            msg = subscriber.recv_multipart()
+            #[fname,data] = msg.split()
+            #filestrs = fname.split('/')
+            #fn = destfile+filestrs[len(filestrs)-1]
 
-        msg = subscriber.recv_multipart()
-        #[fname,data] = msg.split()
-        #filestrs = fname.split('/')
-        #fn = destfile+filestrs[len(filestrs)-1]
-        fn = destfile+"test.1"
-        #f = open(fn, 'ab')
-        with open(fn,'a') as f:
+            #f = open(fn, 'ab')
             print 'open'
             f.write(msg[1])
-            print 'close\n'
-        syncclient.send("Finished writing")
-        syncclient.recv()
+            f.flush()
+            print 'close'
+            #time.sleep(1)
+
+        print "done?"
+
+
+
+
         #break
         #f.close()
 
-
+def listen():
+    syncclient.send("Still listening")
+    syncclient.recv()
+    #print "got a msg"
+    syncclient.send("Finished writing")
+    #time.sleep(2)
+    print "setting exit"
+    global_stop = True
     ####CREATING HANDSHAKE sequence############
     #synchronize with publisher
     #syncclient = context.socket(zmq.REQ)
