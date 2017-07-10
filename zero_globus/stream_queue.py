@@ -12,7 +12,7 @@ from Queue import Queue
 import threading
 
 from config import MyConfig
-import globus_transfer
+#import globus_transfer
 import client_model
 import streamonefile
 import split_stream
@@ -32,7 +32,7 @@ Purpose:              Common app for ZMQ and Globus. User can choose how many
 Author:               Yuliana Zamora
 Email:                yzamora@uchicago.edu
 Date Created:         June 30, 2017
-Date Last Modified:   July 2, 2017
+Date Last Modified:   July 10, 2017
 '''
 
 ##============================================================================##

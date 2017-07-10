@@ -26,7 +26,7 @@ def qcreate():
     #print("Queue is being created")
     q = MyConfig().q
     print("In queue child thread")
-    for rn in xrange(1000):
+    for rn in xrange(10000):
     #while True:
         #rn = random.random()
         q.put(rn)

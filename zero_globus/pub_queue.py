@@ -55,7 +55,7 @@ def transfer():
     print ("Initiating zmq transfer")
 
     f = "/home/parallels/stream_transfer/test_files/queue.ex"
-    t0 = time.time()
+    #t0 = time.time()
     while not q.empty():
     #for i in (1,5):
         v = q.get()
@@ -68,6 +68,7 @@ def transfer():
     syncservice.recv()
     syncservice.send("Finished queue")
     msg = syncservice.recv()
+    t0 = time.time()
     print "Received request2: ", msg
 
 
