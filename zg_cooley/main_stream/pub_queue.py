@@ -32,12 +32,12 @@ def transfer():
     #t0 = time.time()
     context = zmq.Context()
     publisher = context.socket(zmq.PUB)
-    publisher.bind("tcp://127.0.0.1:10111")
+    publisher.bind("tcp://140.221.68.195:55555")
     #time.sleep(5)
 
     """Creating handshake sequence"""
     syncservice = context.socket(zmq.REP)
-    syncservice.bind('tcp://*:10112')
+    syncservice.bind('tcp://*:55554')
     msg = syncservice.recv()
     print "Received request: ", msg
     syncservice.send("Message from 10111") #send synchronization reply
