@@ -1,0 +1,1 @@
+qsub -n 4 -t 00:10:00 --attr=pubnet -A BrainImagingADSP ./test.sh
