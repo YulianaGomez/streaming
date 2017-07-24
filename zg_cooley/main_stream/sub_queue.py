@@ -25,14 +25,14 @@ Date Last Modified:   July 6, 2017
 global_stop = False
 context = zmq.Context()
 syncclient = context.socket(zmq.REQ)
-syncclient.connect('tcp://127.0.0.1:10112')
+syncclient.connect('tcp://140.221.68.195:55555')
 def sub():
     print global_stop
     #print("In sub script")
     context = zmq.Context()
     subscriber = context.socket(zmq.SUB)
     #subscriber.connect("tcp://127.0.0.1:10111")
-    subscriber.connect("tcp://127.0.0.1:10111")
+    subscriber.connect("tcp://140.221.68.195:55554")
     subscriber.setsockopt(zmq.SUBSCRIBE, b'')
 
 
