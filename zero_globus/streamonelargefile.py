@@ -41,15 +41,14 @@ def one_file():
         with open(fname_src,'wr+') as f:
             iline = 0
             #while time.time() < timeout:
-            #while int(os.path.getsize(fname_src)) < 100:
+            while int(os.path.getsize(fname_src)) < 100:
 
-            f.write('Adding line ' + str(iline) + ' in ' + filename
-                                   + '.' + str(ifile) + '\n')
-            #print('Adding line: ', iline)
-            f.flush()
-            iline += 1
-            time.sleep(delay)
-            if int(os.path.getsize(fname_src)) > 1000: break
+                f.write('Adding line ' + str(iline) + ' in ' + filename
+                                       + '.' + str(ifile) + '\n')
+                #print('Adding line: ', iline)
+                f.flush()
+                iline += 1
+                time.sleep(delay)
             #if (nlines <> 0) and (iline == nlines): break
 
     print 'All files Done.(streamonefile)'
