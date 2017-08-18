@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+import datetime
+import re
 import json
 import time
 import sys
@@ -120,17 +121,20 @@ def transfer(sp,destination_endpoint_id):
             raise ex"""
 
       ####COPIED####
-    source_endpoint_id = '2b5e59d2-409e-11e7-bd30-22000b9a448b'#ubuntu-vm
-    source_endpoint_id = 'ad19b012-77cf-11e7-8b98-22000b9923ef'#chameleon
+      #d5db599a-8451-11e7-a8e7-22000a92523b #linux ep
+    source_endpoint_id = 'd5db599a-8451-11e7-a8e7-22000a92523b'
+    #source_endpoint_id = '2b5e59d2-409e-11e7-bd30-22000b9a448b'#ubuntu-vm chicago login
+    #source_endpoint_id = 'ad19b012-77cf-11e7-8b98-22000b9923ef'#chameleon
     # source_endpoint_id = raw_input('Input source endpoint UUID: ')
     #destination path
     ##############SOURCE PATH######################
     #source_path = '/home/parallels/stream_transfer/test_files/'
     #source_path = '/home/parallels/stream_transfer/zero_globus/test_files/'
     source_path = sp
-    "source_path = '/home/parallels/stream_transfer/zero_globus/test_files"
+    print "this is source path from gl_refresh", sp
+   #"source_path = '/home/parallels/stream_transfer/zero_globus/test_files'
     #destination path
-    destination_path = '/~/'
+    destination_path = '/~/' + sp.split("/")[-1]
     #Using my sample UUID from globus tutorial
     #destination_endpoint_id = 'ddb59aef-6d04-11e5-ba46-22000b92c6ec' #globus
     #destination_endpoint_id = '5d1da0fe-3c07-11e7-bcfc-22000b9a448b' #laptop
@@ -146,7 +150,7 @@ def transfer(sp,destination_endpoint_id):
 
     label = "medium data transfer"
     tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level='checksum')
-    tdata.add_item(source_path,destination_path,recursive=True)
+    tdata.add_item(source_path,destination_path,recursive=False)#convert to false for single file
 
     submit_result = tc.submit_transfer(tdata)
     print("Task ID:", submit_result["task_id"])
@@ -211,8 +215,7 @@ def transfer(sp,destination_endpoint_id):
         #print(item['effective_bytes_per_second'])
         #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
         #files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
-        for f in files:
-          os.remove(f)
+
 
 
     #print("Files have been transferred and deleted")
@@ -233,7 +236,7 @@ def main():
   #files = sys.argv[2]
 
 
-  transfer(destination_ep)
+  transfer('/home/parallels/stream_transfer/zero_globus/test_files', destination_ep)
 
 
 
