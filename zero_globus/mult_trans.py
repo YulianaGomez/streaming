@@ -11,7 +11,7 @@ import gl_refresh_chameleon
 
 def multi_transfer():
     one_endpoint = False #set to True when sending to one endpoint
-    chameleon = True
+    chameleon = False
     #ep_count = 0
     with open("endpoints.dat") as f:
       #ep = f.readlines()
@@ -55,32 +55,46 @@ def multi_transfer():
     c5 = (src_path[4],ep[1])
     c6 = (src_path[5],ep[1])
     commands = [c1, c2, c3, c4, c5, c6]
-    ep_count = 0
-    src_count = 0
+    ep_count = 0 #endpoint starting point
+    ind_files = 0 #start counting the files at 0
+    num_files = 6 #total number of files to send
+    num_ep = 2 #number of endpoints you have to send to
     #files = glob.glob(src_path)
     #if len(files) > 0 :
     #for ifile in files
+    """
+     num_ep=4 #the number of endpoints you have to send to
+    num_files = 10 # the total number of files to send
+    ind_files = 0 #start counting the files at 0
+    for ind_file in range(num_files):
+    pid = os.fork()
+    if pid == 0:
+    #do the transfer: use mod(ind_file, num_ep) as the end point index
+    do transfer(file_list[ind_file],end_point[ind_file%num_ep])
+    os._exit(0)
+
+    """
     if one_endpoint:
        gl_refresh_chameleon.transfer(src_path_all,ep[0])
     else:
-        while ep_count < 6:
-            try:
+        #while ep_count < 6:
+        try:
+            for ind_files in range(num_files):
                 pid = os.fork()
                 if pid == 0:
                     #gl_refresh_chameleon.transfer(src_path[ep_count],ep[ep_count])
                     #gl_refresh_chameleon.transfer(commands[ep_count])
-                    print "this is priniting endpoint number: ", ep_count
+                    #print "this is priniting endpoint number: ", ep_count
+                    gl_refresh_chameleon.transfer(src_path[ind_files],ep[ind_files%num_ep])
                     os._exit(0)
-                print "I am the parent process, and I just forked pid: ", pid
+                    print "I am the parent process, and I just forked pid: ", pid
 
-                    #gl_refresh.transfer(src_path[ep_count],ep[ep_count])
-                    # gl_refresh.transfer(src_path[ep_count],ep[ep_count])
-                ep_count += 1
-            except OSError, e:
-
-                print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
-                sys.exit(1)
-                #if ep_count == 4: break"""
+                   #gl_refresh.transfer(src_path[ep_count],ep[ep_count])
+                   # gl_refresh.transfer(src_path[ep_count],ep[ep_count])
+        except OSError, e:
+            print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
+            sys.exit(1)
+            #if ep_count == 4: break"""
 
 if __name__ == "__main__":
     multi_transfer()
