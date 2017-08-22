@@ -6,13 +6,13 @@ import os.path
 import glob
 from pathlib import Path
 from os import makedirs
-import gl_refresh
+import gl_refresh_chameleon
 
 
 def multi_transfer():
-    one_endpoint = False #set to True when sending to multiple endpoints
+    one_endpoint = False #set to True when sending to one endpoint
     chameleon = True
-    ep_count = 0
+    #ep_count = 0
     with open("endpoints.dat") as f:
       #ep = f.readlines()
       ep = [line.rstrip('\n') for line in f]
@@ -45,22 +45,31 @@ def multi_transfer():
     src2 = "/home/parallels/stream_transfer/zero_globus/test_files2"
     src3 = "/home/parallels/stream_transfer/zero_globus/test_files3" """
 
-    src_path_all = '/home/parallels/stream_transfer/zero_globus/test_files'
-    src_path = [src0, src1, src2, src3, src4, src5]
+    #src_path_all = '/home/parallels/stream_transfer/zero_globus/test_files'
+    src_path = [src0, src1, src2, src3,src4, src5]
     #ep = [ep00, ep01, ep02, ep03]
-
-    #ep_count = 0
+    c1 = (src_path[0],ep[0])
+    c2 = (src_path[1],ep[0])
+    c3 = (src_path[2],ep[0])
+    c4 = (src_path[3],ep[1])
+    c5 = (src_path[4],ep[1])
+    c6 = (src_path[5],ep[1])
+    commands = [c1, c2, c3, c4, c5, c6]
+    ep_count = 0
+    src_count = 0
     #files = glob.glob(src_path)
     #if len(files) > 0 :
     #for ifile in files
     if one_endpoint:
-       gl_refresh.transfer(src_path_all,ep00)
+       gl_refresh_chameleon.transfer(src_path_all,ep[0])
     else:
-        while ep_count < 5:
+        while ep_count < 6:
             try:
                 pid = os.fork()
                 if pid == 0:
-                    gl_refresh.transfer(src_path[ep_count],ep[ep_count])
+                    #gl_refresh_chameleon.transfer(src_path[ep_count],ep[ep_count])
+                    #gl_refresh_chameleon.transfer(commands[ep_count])
+                    print "this is priniting endpoint number: ", ep_count
                     os._exit(0)
                 print "I am the parent process, and I just forked pid: ", pid
 
