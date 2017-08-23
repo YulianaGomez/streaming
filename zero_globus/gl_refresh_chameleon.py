@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import re
+import datetime
 import requests
 import logging
 import json
@@ -81,7 +83,7 @@ def do_native_app_authentication(client_id, redirect_uri,
     return token_response.by_resource_server
 
 
-def transfer(sp,destination_endpoint_id):
+def transfer(sp,destination_endpoint_id,one_endpoint):
     tokens = None
     try:
         # if we already have tokens, load and use them
@@ -133,12 +135,15 @@ def transfer(sp,destination_endpoint_id):
     #source_path = '/home/parallels/stream_transfer/test_files/'
     #source_path = '/home/parallels/stream_transfer/zero_globus/test_files/'
     source_path = sp
-    "source_path = '/home/parallels/stream_transfer/zero_globus/test_files"
+    #source_path ='/home/cc/streaming/zero_globus/test_files/test.txt'
+    #source_path = '/home/parallels/stream_transfer/zero_globus/test_files/test.txt'
     #destination path
     #destination_path = '/~/'
-    # destination_path = '/~/'+ sp.split("/")[-1] #use for one file
-    #destination_path = '/projects/BrainImagingADSP/yzamora/'
-    destination_path = '/projects/BrainImagingADSP/yzamora/'+ sp.split("/")[-1] #use for one file
+    #destination_path = '/~/'+ sp.split("/")[-1] #use for one file
+    if one_endpoint:
+        destination_path = '/projects/BrainImagingADSP/yzamora/'
+    else:
+        destination_path = '/projects/BrainImagingADSP/yzamora/'+ sp.split("/")[-1] #use for one file
     #Using my sample UUID from globus tutorial
     #destination_endpoint_id = 'ddb59aef-6d04-11e5-ba46-22000b92c6ec' #globus
     #destination_endpoint_id = '5d1da0fe-3c07-11e7-bcfc-22000b9a448b' #laptop
@@ -153,9 +158,12 @@ def transfer(sp,destination_endpoint_id):
     tc.endpoint_autoactivate(source_endpoint_id)
 
     label = "medium data transfer"
-    #tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level='checksum')
-    tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label)
-    tdata.add_item(source_path,destination_path,recursive=False)
+    tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level='0')
+    #tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label)
+    if one_endpoint:
+        tdata.add_item(source_path,destination_path,recursive=True)
+    else:
+        tdata.add_item(source_path,destination_path,recursive=False)
 
     submit_result = tc.submit_transfer(tdata)
     print("Task ID:", submit_result["task_id"])
@@ -196,7 +204,7 @@ def transfer(sp,destination_endpoint_id):
     #        % (start_time, end_time), limit=5)
 
         print("File transfer SUCCEEDED, will delete file from local directory now")
-        r = tc.task_list(num_results=1, filter="type:TRANSFER,DELETE")
+        """ r = tc.task_list(num_results=1, filter="type:TRANSFER,DELETE")
         all_data = []
         for d in r.data:
             new_event = {}
@@ -212,6 +220,7 @@ def transfer(sp,destination_endpoint_id):
             mn = int(ct[4])-int(rt[4])
             sec = int(ct[5])-int(rt[5])
             print ("Duration of time:%i:%i:%i"% (hr,mn,sec))
+        """
 
         """rt = int(item['request_time'])
         ct = int(item['completion_time'])
@@ -220,8 +229,8 @@ def transfer(sp,destination_endpoint_id):
         #print(item['effective_bytes_per_second'])
         #files = glob.glob('/home/parallels/stream_transfer/test_files/*')
         #files = glob.glob('/home/parallels/stream_transfer/zero_globus/test_files/*')
-        for f in files:
-          os.remove(f)
+        """for f in files:
+          os.remove(f)"""
 
 
     #print("Files have been transferred and deleted")
