@@ -158,7 +158,8 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
     tc.endpoint_autoactivate(source_endpoint_id)
 
     label = "medium data transfer"
-    tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level='0')
+    #tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level='0')
+    tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label, sync_level=None, verify_checksum=False)
     #tdata = globus_sdk.TransferData(tc, source_endpoint_id, destination_endpoint_id,label=label)
     if one_endpoint:
         tdata.add_item(source_path,destination_path,recursive=True)
