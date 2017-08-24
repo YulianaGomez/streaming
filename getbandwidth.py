@@ -19,7 +19,7 @@ Date Created:         August 23, 2017
 Date Last Modified:   August 24, 2017
 '''
 
-end_time = 5 #number of seconds to run program
+end_time = 30 #number of seconds to run program
 
 ##============================================================================##
 ##--------------------------------- getbw----- -------------------------------##
@@ -36,11 +36,10 @@ def getbw():
             st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
             ifdata = Ifcfg(commands.getoutput('ifconfig -a'))
             interfacelist = ifdata.interfaces
-            eth = ifdata.get_interface('enp0s5')
+            eth = ifdata.get_interface('ens3')
             eth0 = eth.get_values()
             starting_rx= eth0[u'rxbytes']
             starting_tx = eth0[u'txbytes']
-            print "debug"
             timeout = time.time() + end_time
             while time.time() < timeout:
                 time.sleep(1)
@@ -50,7 +49,7 @@ def getbw():
                 interfacelist = ifdata.interfaces
                 #print "this is other interface is list \n", interfacelist
                 #print "these are rx bytes", ifdata.get(itype='RX bytes:')
-                eth = ifdata.get_interface('enp0s5')
+                eth = ifdata.get_interface('ens3')
                 eth0 = eth.get_values()
                 cur_rx = eth0[u'rxbytes']
                 cur_tx = eth0[u'txbytes']
