@@ -19,7 +19,7 @@ Date Created:         August 23, 2017
 Date Last Modified:   August 24, 2017
 '''
 
-end_time = 30 #number of seconds to run program
+end_time = 90 #number of seconds to run program
 
 ##============================================================================##
 ##--------------------------------- getbw----- -------------------------------##
