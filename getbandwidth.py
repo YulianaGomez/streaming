@@ -57,13 +57,20 @@ def getbw():
                 cur_tx = eth0[u'txbytes']
                 if totalbw_rx == 0 and totalbw_tx == 0:
                     if bw:
-                        bw_rx = int(cur_rx) - int(starting_rx)
-                        newrx = cur_rx
-
-                        bw_tx = int(cur_tx) - int(starting_tx)
-                        newtx = cur_tx
-                        r.writelines(str(bw_rx) + '\n')
-                        t.writelines(str(bw_tx) + '\n')
+                        if totalbw_rx == 0 and totalbw_tx == 0:
+                            bw_rx = int(cur_rx) - int(starting_rx)
+                            newrx = cur_rx
+                            bw_tx = int(cur_tx) - int(starting_tx)
+                            newtx = cur_tx
+                            r.writelines(str(bw_rx) + '\n')
+                            t.writelines(str(bw_tx) + '\n')
+                        else:
+                            bw_rx = int(cur_rx) - int(newrx)
+                            bw_tx = int(cur_tx) - int(newtx)
+                            newrx = cur_rx
+                            newtx = cur_tx
+                            r.writelines(str(bw_rx) + '\n')
+                            t.writelines(str(bw_tx) + '\n')
                     else:
                         totalbw_rx +=  int(cur_rx) - int(starting_rx)
                         newrx = cur_rx
