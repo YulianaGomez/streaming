@@ -29,7 +29,9 @@ end_time = 5 #number of seconds to run program
 def getbw():
     with open('rx_values', 'ab') as r:
         with open('tx_values', 'ab') as t:
-            pd = False #set to trye if you want all details written into file
+            pd = False #set to true if you want all details written into file
+            total = False # set to true if you want total bw usage in file
+            bw = True # set true when want bw utilization
             totalbw_rx = 0
             totalbw_tx = 0
             ts = time.time()
@@ -55,20 +57,30 @@ def getbw():
                 cur_rx = eth0[u'rxbytes']
                 cur_tx = eth0[u'txbytes']
                 if totalbw_rx == 0 and totalbw_tx == 0:
-                    totalbw_rx +=  int(cur_rx) - int(starting_rx)
-                    newrx = cur_rx
+                    if bw:
+                        bw_rx = int(cur_rx) - int(starting_rx)
+                        newrx = cur_rx
 
-                    totalbw_tx +=  int(cur_tx) - int(starting_tx)
-                    newtx = cur_tx
+                        bw_tx = int(cur_tx) - int(starting_tx)
+                        newtx = cur_tx
+                        r.writelines(str(bw_rx) + '\n')
+                        t.writelines(str(bw_tx) + '\n')
+                    else:
+                        totalbw_rx +=  int(cur_rx) - int(starting_rx)
+                        newrx = cur_rx
+
+                        totalbw_tx +=  int(cur_tx) - int(starting_tx)
+                        newtx = cur_tx
                 else:
                     totalbw_rx += int(cur_rx) - int(newrx)
                     totalbw_tx += int(cur_tx) - int(newtx)
                 if pd:
                     r.writelines('Time: ' + str(st) + ' Values: ' + 'RX bytes: '+ str(eth0[u'rxbytes']) + " Total RX: " + str(totalbw_rx) + "\n")
                     t.writelines('Time: ' + str(st) + ' Values: '+ 'TX bytes: '+ str(eth0[u'txbytes']) + " Total TX: " + str(totalbw_tx) +"\n")
-                else:
+                elif total:
                     r.writelines(str(totalbw_rx) + '\n')
                     t.writelines(str(totalbw_tx) + '\n')
+
                 #data = json.loads(eth0)
                 #print "this is eth0 values:", eth0
                 print "this is rx value:", eth0[u'rxbytes']
