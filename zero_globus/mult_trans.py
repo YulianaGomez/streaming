@@ -11,7 +11,7 @@ import gl_refresh_chameleon
 
 def multi_transfer():
     one_endpoint = True #set to True when sending to one endpoint
-    chameleon = True
+    chameleon = False
     #ep_count = 0
     with open("endpoints.dat") as f:
       #ep = f.readlines()
