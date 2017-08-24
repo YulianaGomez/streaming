@@ -30,12 +30,12 @@ def multi_transfer():
 
         src_path_all = '/home/parallels/stream_transfer/zero_globus/test_files'
     else:
-        src0 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.0"
-        src1 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.1"
-        src2 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.2"
-        src3 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.3"
-        src4 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.4"
-        src5 = "/home/cc/streaming/zero_globus/test_files/bigfile_test_tb.5"
+        src0 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.0"
+        src1 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.1"
+        src2 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.2"
+        src3 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.3"
+        src4 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.4"
+        src5 = "/home/cc/streaming/zero_globus/test_files/bigfile_test.5"
 
         src_path_all = '/home/cc/streaming/zero_globus/test_files'
 
@@ -53,7 +53,7 @@ def multi_transfer():
     ep_count = 0 #endpoint starting point
     ind_files = 0 #start counting the files at 0
     num_files = 6 #total number of files to send
-    num_ep = 2#number of endpoints you have to send to
+    num_ep = 3 #number of endpoints you have to send to
     #files = glob.glob(src_path)
     #if len(files) > 0 :
     #for ifile in files
