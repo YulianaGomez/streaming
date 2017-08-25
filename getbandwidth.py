@@ -65,6 +65,8 @@ def getbw():
                          newtx = cur_tx
                          r.writelines(str(bw_rx) + '\n')
                          t.writelines(str(bw_tx) + '\n')
+                         totalbw_rx = 1
+                         totalbw_tx = 1
                      else:
                          bw_rx = int(cur_rx) - int(newrx)
                          bw_tx = int(cur_tx) - int(newtx)
