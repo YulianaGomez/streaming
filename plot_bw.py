@@ -35,11 +35,11 @@ fig = plt.figure()
 
 ax1 = fig.add_subplot(111)
 
-ax1.set_title("Bandwidth Utilization from Chameleon to Cooley")
+ax1.set_title("Bandwidth Utilization: Chameleon Node to  Chameleon Node")
 ax1.set_xlabel('Time (s)')
-ax1.set_ylabel('Bytes Transferred')
+ax1.set_ylabel('Data Transfer Rate (Bytes/Second)')
 
-ax1.plot(x,y, c='r', label='Bytes')
+ax1.plot(x,y, c='r', label='Bandwidth Utilization')
 
 leg = ax1.legend()
 
