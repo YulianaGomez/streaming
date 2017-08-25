@@ -56,35 +56,45 @@ def getbw():
                 eth0 = eth.get_values()
                 cur_rx = eth0[u'rxbytes']
                 cur_tx = eth0[u'txbytes']
-                if totalbw_rx == 0 and totalbw_tx == 0:
-                    if bw:
-                        if totalbw_rx == 0 and totalbw_tx == 0:
-                            bw_rx = int(cur_rx) - int(starting_rx)
-                            newrx = cur_rx
-                            bw_tx = int(cur_tx) - int(starting_tx)
-                            newtx = cur_tx
-                            r.writelines(str(bw_rx) + '\n')
-                            t.writelines(str(bw_tx) + '\n')
-                        else:
-                            bw_rx = int(cur_rx) - int(newrx)
-                            bw_tx = int(cur_tx) - int(newtx)
-                            newrx = cur_rx
-                            newtx = cur_tx
-                            r.writelines(str(bw_rx) + '\n')
-                            t.writelines(str(bw_tx) + '\n')
-                    else:
+
+                #obtaining bw utilization per second
+                if bw:
+                     if totalbw_rx == 0 and totalbw_tx == 0:
+                         bw_rx = int(cur_rx) - int(starting_rx)
+                         newrx = cur_rx
+                         bw_tx = int(cur_tx) - int(starting_tx)
+                         newtx = cur_tx
+                         r.writelines(str(bw_rx) + '\n')
+                         t.writelines(str(bw_tx) + '\n')
+                     else:
+                         bw_rx = int(cur_rx) - int(newrx)
+                         bw_tx = int(cur_tx) - int(newtx)
+                         newrx = cur_rx
+                         newtx = cur_tx
+                         r.writelines(str(bw_rx) + '\n')
+                         t.writelines(str(bw_tx) + '\n')
+                #Getting initial total bw results
+                elif total:
+                    print "In total loop"
+                    if totalbw_rx == 0 and totalbw_tx == 0:
                         totalbw_rx +=  int(cur_rx) - int(starting_rx)
                         newrx = cur_rx
 
                         totalbw_tx +=  int(cur_tx) - int(starting_tx)
                         newtx = cur_tx
-                else:
-                    totalbw_rx += int(cur_rx) - int(newrx)
-                    totalbw_tx += int(cur_tx) - int(newtx)
+                    #accumulating total bw
+                    else:
+                        print "In total else loop"
+                        totalbw_rx += int(cur_rx) - int(newrx)
+                        totalbw_tx += int(cur_tx) - int(newtx)
+
+                #decing whether to write detail output (pd) or just total bw (total)
                 if pd:
+                    print "In pd print loop"
                     r.writelines('Time: ' + str(st) + ' Values: ' + 'RX bytes: '+ str(eth0[u'rxbytes']) + " Total RX: " + str(totalbw_rx) + "\n")
                     t.writelines('Time: ' + str(st) + ' Values: '+ 'TX bytes: '+ str(eth0[u'txbytes']) + " Total TX: " + str(totalbw_tx) +"\n")
                 elif total:
+                    print "In total print loop"
                     r.writelines(str(totalbw_rx) + '\n')
                     t.writelines(str(totalbw_tx) + '\n')
 
