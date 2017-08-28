@@ -17,8 +17,9 @@ Date Last Modified:   August 16, 2017
 '''
 
 run_split = False   # Set to True to run 'split_stream.py' by running this
-filename  = 'filename_test'
-src_path  = '/home/parallels/stream_transfer/zero_globus/test_files'
+filename  = 'bigfile_test'
+src_path = '/home/cc/streaming/zero_globus/test_files'
+#src_path  = '/home/parallels/stream_transfer/zero_globus/test_files'
 #src_path  = './test_files_src'
 nfiles    = 3
 nlines    = 1000   # Set to zero to stream until 'end_time'
@@ -41,7 +42,7 @@ def one_file():
         with open(fname_src,'wr+') as f:
             iline = 0
             #while time.time() < timeout:
-            while int(os.path.getsize(fname_src)) < 100:
+            while int(os.path.getsize(fname_src)) < 20000000000:
 
                 f.write('Adding line ' + str(iline) + ' in ' + filename
                                        + '.' + str(ifile) + '\n')

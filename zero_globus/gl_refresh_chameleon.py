@@ -128,7 +128,7 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
       ####COPIED####
     source_endpoint_id = 'b0b16296-88e7-11e7-a971-22000a92523b' #bare chameleon
     #source_endpoint_id = 'e5762bc2-8466-11e7-a8ed-22000a92523b' #large_chameleon
-    source_endpoint_id = '8b26cc0e-877b-11e7-a949-22000a92523b'#ubuntu-vm
+    #source_endpoint_id = '8b26cc0e-877b-11e7-a949-22000a92523b'#ubuntu-vm
     #source_endpoint_id = 'ad19b012-77cf-11e7-8b98-22000b9923ef'#chameleon
     # source_endpoint_id = raw_input('Input source endpoint UUID: ')
     #destination path
