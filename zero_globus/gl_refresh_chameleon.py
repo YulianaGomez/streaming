@@ -138,12 +138,12 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
     #source_path ='/home/cc/streaming/zero_globus/test_files/test.txt'
     #source_path = '/home/parallels/stream_transfer/zero_globus/test_files/test.txt'
     #destination path
-    #destination_path = '/~/'
+    destination_path = '/~/'
     #destination_path = '/~/'+ sp.split("/")[-1] #use for one file
-    if one_endpoint:
-        destination_path = '/projects/BrainImagingADSP/yzamora/'
-    else:
-        destination_path = '/projects/BrainImagingADSP/yzamora/'+ sp.split("/")[-1] #use for one file
+    ##if one_endpoint:
+    ##    destination_path = '/projects/BrainImagingADSP/yzamora/'
+    ##else:
+    ##    destination_path = '/projects/BrainImagingADSP/yzamora/'+ sp.split("/")[-1] #use for one file
     #Using my sample UUID from globus tutorial
     #destination_endpoint_id = 'ddb59aef-6d04-11e5-ba46-22000b92c6ec' #globus
     #destination_endpoint_id = '5d1da0fe-3c07-11e7-bcfc-22000b9a448b' #laptop

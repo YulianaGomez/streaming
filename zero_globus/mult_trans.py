@@ -11,7 +11,7 @@ import gl_refresh_chameleon
 
 def multi_transfer():
     one_endpoint = True #set to True when sending to one endpoint
-    chameleon = True
+    chameleon = False
     #ep_count = 0
     with open("endpoints.dat") as f:
       #ep = f.readlines()
@@ -71,7 +71,8 @@ def multi_transfer():
     """
     if one_endpoint:
        print("Using only one endpoint.\n")
-       gl_refresh_chameleon.transfer(src_path_all,ep[0],one_endpoint)
+       #gl_refresh_chameleon.transfer(src_path_all,ep[0],one_endpoint)
+       gl_refresh_chameleon.transfer(src_path_all,'b0b16296-88e7-11e7-a971-22000a92523b',one_endpoint) #bare chameleon endpoint
        #gl_refresh_chameleon.transfer(src_path_all,'ab7932b2-8780-11e7-a949-22000a92523b',one_endpoint)
     else:
         print("Using multiple endpoints.\n")
