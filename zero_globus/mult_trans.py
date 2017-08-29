@@ -10,8 +10,13 @@ import gl_refresh_chameleon
 
 
 def multi_transfer():
+<<<<<<< HEAD
     one_endpoint = True #set to True when sending to one endpoint
     chameleon = False
+=======
+    one_endpoint = False #set to True when sending to one endpoint
+    chameleon = True
+>>>>>>> 934a34b277e551f1945314658e894acfe001f158
     #ep_count = 0
     with open("endpoints.dat") as f:
       #ep = f.readlines()
@@ -41,7 +46,7 @@ def multi_transfer():
 
 
     #src_path_all = '/home/parallels/stream_transfer/zero_globus/test_files'
-    src_path = [src0, src1, src2, src3,src4, src5]
+    src_path = [src1, src2, src3,src4, src5]
     #ep = [ep00, ep01, ep02, ep03]
     """c1 = (src_path[0],ep[0])
     c2 = (src_path[1],ep[0])
@@ -52,8 +57,8 @@ def multi_transfer():
     commands = [c1, c2, c3, c4, c5, c6] """
     ep_count = 0 #endpoint starting point
     ind_files = 0 #start counting the files at 0
-    num_files = 6 #total number of files to send
-    num_ep = 3 #number of endpoints you have to send to
+    num_files = 5 #total number of files to send
+    num_ep = 4 #number of endpoints you have to send to
     #files = glob.glob(src_path)
     #if len(files) > 0 :
     #for ifile in files

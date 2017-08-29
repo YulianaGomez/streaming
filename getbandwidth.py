@@ -40,8 +40,7 @@ def getbw():
                 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
                 ifdata = Ifcfg(commands.getoutput('ifconfig -a'))
                 interfacelist = ifdata.interfaces
-                #eth = ifdata.get_interface('ens3')
-                eth = ifdata.get_interface('enp0s5')
+                eth = ifdata.get_interface('eno1')
                 eth0 = eth.get_values()
                 starting_rx= eth0[u'rxbytes']
                 starting_tx = eth0[u'txbytes']
