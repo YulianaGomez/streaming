@@ -1,0 +1,508 @@
+    1  ls
+    2  clear
+    3  sudo curl -LOs https://downloads.globus.org/toolkit/globus-connect-server/globus-connect-server-repo-latest.noarch.rpm
+    4  ls
+    5  sudo curl -LOs https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm
+    6  ls
+    7  sudo yum install globus-connect-server
+    8  sudo install globus-connect-server
+    9  sudo rpm --import https://downloads.globus.org/toolkit/gt6/stable/repo/rpm/RPM-GPG-KEY-Globus
+   10  sudo zypper install globus-connect-server-repo-latest.noarch.rpm
+   11  sudo zypper ar http://download.opensuse.org/repositories/Apache/SLE_12_SP2/Apache.repo
+   12  sudo zypper ar http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_12_SP2/Apache:Modules.repo
+   13  sudo rpm --import http://download.opensuse.org/repositories/Apache/SLE_12_SP2/repodata/repomd.xml.key
+   14  sudo rpm --import http://download.opensuse.org/repositories/Apache:/Modules/Apache_SLE_12_SP2/repodata/repomd.xml.key
+   15  sudo zypper remove libapr1
+   16  sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-Globus
+   17  sudo dpkg -i globus-connect-server-repo_latest_all.deb
+   18  sudo apt-get update
+   19  sudo apt-get install globus-connect-server
+   20  ls
+   21  sudo curl -LOs https://downloads.globus.org/toolkit/globus-connect-server/globus-connect-server-repo_latest_all.deb
+   22  ls
+   23  sudo dpkg -i globus-connect-server-repo_latest_all.deb
+   24  sudo apt-get update
+   25  sudo apt-get install globus-connect-server
+   26  vi /etc/globus-connect-server.conf 
+   27  chmon +w /etc/globus-connect-server.conf 
+   28  chmod +w /etc/globus-connect-server.conf 
+   29  sudo chmod +w /etc/globus-connect-server.conf 
+   30  vi /etc/globus-connect-server.conf
+   31  chmod +rw /etc/globus-connect-server.conf
+   32  chmod -R +w+r /etc/globus-connect-server.conf
+   33  cd etc
+   34  cd /etc
+   35  ;s
+   36  ls
+   37  chmod +w+r globus-connect-server.conf 
+   38  sudo chmod -R +w+r globus-connect-server.conf 
+   39  touch immutable
+   40  sudo chown root:root immutable
+   41  sudho chown chmod +w+r globus-connect-server.conf 
+   42  sudo vi globus-connect-server.conf 
+   43  cd
+   44  ls
+   45  sudo vi /etc/globus-connect-server.conf
+   46  sudo globus-connect-server-setup
+   47  globus login
+   48  ls
+   49  whoami
+   50  sudo /etc/globus-connect-server.conf
+   51  sudo vi /etc/globus-connect-server.conf
+   52  source /etc/globus-connect-server.conf
+   53  sudo vi /etc/globus-connect-server.conf
+   54  echo %HOSTNAME
+   55  echo %(HOSTNAME)s
+   56  echo HOSTNAME
+   57  sudo vi /etc/globus-connect-server.conf
+   58  pwd
+   59  ls
+   60  vi /etc/globus-connect-server.conf
+   61  sudo vi /etc/globus-connect-server.conf
+   62  /etc/globus-connect-server.conf
+   63  sudo vi /etc/globus-connect-server.conf
+   64  hostname
+   65  globus login
+   66  ls
+   67  hostname
+   68  vi /etc/globus-connect-server.conf
+   69  sudo vi /etc/globus-connect-server.conf
+   70  globus login
+   71  ls
+   72  cd!
+   73  cd !
+   74  exit
+   75  ls
+   76  ./globus-gridftp-server -aa -p 50001
+   77  screen
+   78  ls
+   79  netstat -a | grep 50001
+   80  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+   81  globus-url-copy --help
+   82  globus-url-copy -help
+   83  globus-url-copy -help > o
+   84  globus-url-copy -help &> o
+   85  vi o
+   86  clear
+   87  ls
+   88  vi o
+   89  history
+   90  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+   91  export GLOBUS_TCP_PORT_RANGE=50000,51000
+   92  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+   93  exit
+   94  screen
+   95  ls
+   96  globus-gridftp-server -aa -p 50001
+   97  clear
+   98  ls
+   99  globus
+  100  which globus
+  101  globus-gridftp-server -help
+  102  globus-gridftp-server -help &>o
+  103  vi o
+  104  globus-gridftp-server -aa -p 50001
+  105  exit
+  106  ls
+  107  ps -al
+  108  netstat -a
+  109  exit
+  110  ls
+  111  vi !
+  112  clear
+  113  ls
+  114  cd globusconnectpersonal-2.3.3/
+  115  ls
+  116  cd gt_i386/
+  117  ls
+  118  cd sbin/
+  119  ls
+  120  ./globus-gridftp-server 
+  121  echo $GLOBUS_LOCATION
+  122  ls -al
+  123  ./globus-gridftp-server 
+  124  pwd
+  125  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  126  ./globus-gridftp-server 
+  127  sudo ./globus-gridftp-server 
+  128  globus-gridftp-server
+  129  which globus-gridftp-server
+  130  cd ..
+  131  ls
+  132  cd ..
+  133  ls
+  134  ps -al
+  135  ip addr
+  136  vi /etc/hosts
+  137  ping 130.202.88.141
+  138  ip addr
+  139  netstat | grep 50001
+  140  netstat -all | grep 50001
+  141  netstat -a 
+  142  netstat -a | grep 50001
+  143  ps -al
+  144  cd
+  145  ls
+  146  cd globusconnectpersonal-2.3.3/gt_i386/sbin/
+  147  ls
+  148  cd
+  149  which globus-gridftp-server
+  150  globus-gridftp-server -aa -p 50001 
+  151  screen
+  152  exit
+  153  ls
+  154  cd globusconnectpersonal-2.3.3/
+  155  ls
+  156  cd gt_i386/
+  157  ls
+  158  cd sbin/
+  159  ls
+  160  ./globus-gridftp-server -aa -p 50001
+  161  ls
+  162  cd ../
+  163  pwd
+  164  cd sbin/
+  165  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  166  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  167  ./globus-gridftp-server -aa -p 50001
+  168  ./globus-gridftp-server 
+  169  ls
+  170  echo $GLOBUS_LOCATION
+  171  sudo vi /etc/globus-connect-server.config
+  172  sudo vi /etc/globus-connect-server.conf
+  173  useradd yzamora
+  174  sudo useradd yz
+  175  ls
+  176  ssh yz
+  177  sudo mount -o remount,rw /
+  178  clear
+  179  sudo useradd yz
+  180  whoami
+  181  su -yz
+  182  whoami
+  183  su - yz
+  184  passwd user
+  185  passwd yz
+  186  sudo passwd yz
+  187  su - yz
+  188  ls
+  189  su -yz
+  190  su - yz
+  191  sudo visudo
+  192  su - yz
+  193  clear
+  194  ls
+  195  pip install globus-gridftp
+  196  sudo apt install python-pip
+  197  sudo apt-get globus-gridftp globus-gram5 globus-gsi myproxy     myproxy-server myproxy-admin
+  198  sudo apt-get globus-gridftp globus-gram5 globus-gsi myproxy myproxy-server myproxy-admin
+  199  sudo apt-get globus-gridftp 
+  200  sudo apt-get install globus-gridftp
+  201  ls
+  202  globus login
+  203  which virtualenv || sudo pip install virtualenv
+  204  virtualenv "$HOME/.globus-cli-virtualenv"
+  205  source "$HOME/.globus-cli-virtualenv/bin/activate"
+  206  pip install globus-cli
+  207  deactivate
+  208  export PATH="$PATH:$HOME/.globus-cli-virtualenv/bin"
+  209  echo 'export PATH="$PATH:$HOME/.globus-cli-virtualenv/bin"' >> "$HOME/.bashrc"
+  210  globus login
+  211  ssh yzamora@cli.globusonline.org
+  212  chmod 400 ~/.ssh/id_*
+  213  sudo chmod 400 ~/.ssh/id_*
+  214  ssh-keygen -t rsa
+  215  chmod 400 ~/.ssh/id_*
+  216  ssh yzamora@cli.globusonline.org
+  217  cat ~/.ssh/id_rsa.pub
+  218  ssh yzamora@cli.globusonline.org
+  219  ssh -i ~/.ssh/id_rsa.pub yzamora@cli.globusonline.org
+  220  globus login
+  221  globus whoami
+  222  globus-gridftp-server -aa -p 50001
+  223  ssh yzamora@cli.globusonline.prg
+  224  ssh yzamora@cli.globusonline.org
+  225  source $GLOBUS_LOCATION/etc/globus-user-env.sh
+  226  globus-gridftp-server-help
+  227  globus-gridftp-server -help
+  228  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141/dev/null
+  229  export GLOBUS_LOCATION="/home/yzamora/globusconnectpersonal-2.3.3/gt_i386"
+  230  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  231  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141/dev/null
+  232  sudo globus-connect-server-setup --verbose
+  233  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141/dev/null
+  234  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  235  ip addr
+  236  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://10.140.83.127:50001/dev/null
+  237  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  238  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://10.140.83.127:50001/dev/null
+  239  ls
+  240  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  241  globus-url-copy  -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  242  globus-url-copy  -gsb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  243  globus-url-copy -vb -gsb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  244  globus-url-copy -vb -dbg -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  245  ls
+  246  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  247  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero /dev/null
+  248  wget https://s3.amazonaws.com/connect.globusonline.org/linux/stable/globusconnectpersonal-latest.tgz
+  249  tar xzf globusconnectpersonal-latest.tgz 
+  250  cd globusconnectpersonal-2.3.3/
+  251  ./globusconnectpersonal -setup 5fd00b56-11ea-4ba8-9ddf-ac581252a15e
+  252  ./globusconnectpersonal -start &
+  253  ls
+  254  cd gt_i386/
+  255  ls
+  256  cd sbin/
+  257  ls
+  258  cd
+  259  globus-url-copy -vb -p 10 ftp://140.221.68.129:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  260  ls
+  261  vi ~/.ssh/
+  262  cd  ~/.ssh/
+  263  ls
+  264  vi authorized_keys 
+  265  sudo vi authorized_keys 
+  266  l
+  267  cd
+  268  clear
+  269  ls
+  270  cd globusconnectpersonal-2.3.3/
+  271  ./globusconnectpersonal -start &
+  272  ls
+  273  cd
+  274  history
+  275  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  276  clear
+  277  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  278  history
+  279  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  280  echo $GLOBUS_LOCATION
+  281  history
+  282  history | grep export
+  283  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  284  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  285  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  286  ls
+  287  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  288  telnet 130.202.88.141:2811
+  289  telnet 130.202.88.141 2811
+  290  export GLOBUS_TCP_PORT_RANGE=2810,2830
+  291  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  292  globus-url-copy -vb -p 10 gridftp://140.221.68.188:50001/dev/zero gridftp://130.202.88.141:2811/dev/null
+  293  globus-url-copy -vb -p 10 gftp://140.221.68.188:50001/dev/zero gftp://130.202.88.141:2811/dev/null
+  294  globus-url-copy -vb -p 10 gsiftp://140.221.68.188:50001/dev/zero gsiftp://130.202.88.141:2811/dev/null
+  295  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero gsiftp://130.202.88.141:2811/dev/null
+  296  ls -al
+  297  ls -al ~/.globusonline/lta/
+  298  clear
+  299  history
+  300  ls
+  301  history
+  302  ls
+  303  history | grep setup
+  304  su yz
+  305  ls
+  306  history
+  307  echo GLOBUS_LOCATION
+  308  echo $GLOBUS_LOCATION
+  309  vi /etc/hosts
+  310  sudo cc-snapshot chi1
+  311  glance image-list
+  312  ls
+  313  history
+  314  clear
+  315  globus-gridftp-server -p 5001
+  316  ls
+  317  cd globusconnectpersonal-2.3.3/
+  318  ls
+  319  cd gt_i386/
+  320  ls
+  321  cd sbin/
+  322  ls
+  323  ./globus-gridftp-server -aa -p 5001
+  324  cd
+  325  ./globus-gridftp-server -aa -p 5001
+  326  cd globusconnectpersonal-2.3.3/gt_i386/sbin/
+  327  globus-gridftp-server -aa -p 5001
+  328  globus-gridftp-server -aa -p 50001
+  329  clear
+  330  globus-gridftp-server -aa -p 50001
+  331  pqd
+  332  pwd
+  333  ls
+  334  ps -al
+  335  top
+  336  who
+  337  history
+  338  echo $GLOBUS_LOCATION
+  339  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  340  history | grep export
+  341  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  342  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  343  history
+  344  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero gsiftp://130.202.88.141:2811/dev/null
+  345  history
+  346  history | grep globus-url-copy
+  347  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  348  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  349  ls
+  350  cd globusconnectpersonal-2.3.3/
+  351  ./globusconnectpersonal -start &
+  352  cd
+  353  clear
+  354  ls
+  355  history
+  356  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  357  clear
+  358  history
+  359  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  360  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  361  echo $GLOBUS_LOCATION
+  362  history
+  363  vi ~/.globusonline/lta/config-paths
+  364  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  365  telnet localhost 2811
+  366  history
+  367  echo $GLOBUS_LOCATION
+  368  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  369  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  370  echo $GLOBUS_LOCATION
+  371  echo $GLOBUS_TCP_PORT
+  372  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  373  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  374  globus-url-copy -vb -DBG -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  375  globus-url-copy -vb -dbg -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:2811/dev/null
+  376  vi /etc/
+  377  vi /etc/hosts
+  378  globus-url-copy -vb -dbg -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  379  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  380  history | grep globus-url-copy
+  381  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  382  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  383  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  384  globus-url-copy -vb -p 10 ftp://140.221.68.165:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  385  globus-url-copy -vb -p 10 ftp://140.221.68.188:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  386  globus-url-copy -vb -p 10 ftp://140.221.68.165:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  387  globus-url-copy -vb -p 10 gsiftp://140.221.68.165:50001/dev/zero gsiftp://130.202.88.141:50001/dev/null
+  388  echo $GLOBUS_LOCATION
+  389  echo $GLOBUS_TCP_PORT
+  390  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  391  echo $GLOBUS_TCP_PORT_RANGE
+  392  history
+  393  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  394  globus-url-copy -vb -p 10 ftp://130.202.88.141:50001/dev/zero ftp://140.221.68.144:50001/dev/null
+  395  globus-url-copy -vb -p 10 ftp://140.221.68.144:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  396  globus-url-copy -vb -p 10 ftp://140.221.68.165:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  397  echo $GLOBUS_TCP_PORT_RANGE
+  398  ip addr
+  399  echo $GLOBUS_LOCATION
+  400  la
+  401  cd globusconnectpersonal-2.3.3/
+  402  ls
+  403  cd gt_i386/
+  404  ls
+  405  cd sbin
+  406  history | grep globus
+  407  globus-gridftp-server -aa -p 50001
+  408  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  409  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  410  globus-gridftp-server -aa -p 50001
+  411  pwd
+  412  ls
+  413  ./globus-gridftp-server -aa -p 50001
+  414  .globus-gridftp-server -aa -p 50001
+  415  globus-gridftp-server -aa -p 50001
+  416  history | grep globus
+  417  echo $GLOBUS_LOCATION
+  418  history | grep export
+  419  echo $GLOBUS_TCP_PORT
+  420  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  421  globus-gridftp-server -aa -p 50001
+  422  pwd
+  423  ls
+  424  globus-gridftp-server -aa -p 50001
+  425  history | grep export
+  426  globus-gridftp-server -aa -p 50001
+  427  ./globus-gridftp-server -aa -p 50001
+  428  ./globus-gridftp-server -v -aa -p 50001
+  429  globus-gridftp-server -v -aa -p 50001
+  430  globus-gridftp-server -exec -aa -p 50001
+  431  -exec globus-gridftp-server -aa -p 50001
+  432  globus-gridftp-server -aa -p 50001
+  433  history | grep server
+  434  sudo apt-get globus-gridftp globus-gram5 globus-gsi myproxy myproxy-server myproxy-admin
+  435  globus-gridftp-server -aa -p 50001
+  436  globus-gridftp-server -v -aa -p 50001
+  437  globus-gridftp-server -aa -p 50001
+  438  pw
+  439  pwd
+  440  echo $GLOBUS_LOCATION
+  441  ls
+  442  history | grep export
+  443  globus-gridftp-server -aa -p 50001echo $GLOBUS_LOCATION
+  444  echo $GLOBUS_LOCATION
+  445  ls
+  446  cd globusconnectpersonal-2.3.3/
+  447  ./globusconnectpersonal -start &
+  448  cd
+  449  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero /dev/null
+  450  globus_gridftp_server
+  451  sudo apt-get install globus_gridftp_server
+  452  globus-url-copy -vb -p 10 ftp://140.221.68.153:50002/dev/zero /dev/null
+  453  echo $GLOBUS_LOCATION
+  454  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  455  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  456  globus-url-copy -vb -p 10 ftp://140.221.68.153:50002/dev/zero /dev/null
+  457  globus-url-copy -vb -p 10 ftp://140.221.68.153:50002/dev/zero ftp://130.202.88.141:50002/dev/null
+  458  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  459  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero /dev/null
+  460  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  461  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero /dev/null
+  462  export GLOBUS_HOSTNAME=130.202.88.141
+  463  globus-url-copy -vb -p 10 ftp://140.221.68.153:50001/dev/zero ftp://130.202.88.141:50001/dev/null
+  464  globus-url-copy -vb -p 10 ftp://140.221.68.153:50002/dev/zero ftp://130.202.88.141:50002/dev/null
+  465  ls
+  466  history | grep export
+  467  export GLOBUS_LOCATION="/home/cc/globusconnectpersonal-2.3.3/gt_i386"
+  468  export GLOBUS_TCP_PORT_RANGE=50000,51000
+  469  history | grep ./globus
+  470  ./globus-gridftp-server -v -aa -p 50001
+  471  ls
+  472  cd globusconnectpersonal-2.3.3/
+  473  ls
+  474  cd gt_i386/
+  475  ls
+  476  cd sbin/
+  477  cd globusconnectpersonal-2.3.3/
+  478  ./globus-gridftp-server -v -aa -p 50001
+  479  globus-gridftp-server -v -aa -p 50001
+  480  globus-gridftp-server -aa -p 50001
+  481  globus-gridftp-server -aa
+  482  globus-gridftp-server -aa -p 50002
+  483  globus-gridftp-server -aa -p 50001
+  484  cd
+  485  ./globus-gridftp-server -aa -p 50001
+  486  globus-gridftp-server -aa -p 50001
+  487  unset GLOBUS_LOCATION
+  488  globus-gridftp-server -aa -p 50001
+  489  globus-gridftp-server -aa -p 50002
+  490  exit
+  491  ls
+  492  history
+  493  git clone git@github.com:YulianaGomez/streaming.git
+  494  ssh-keygen -t rsa -b 4096 "ygomez297@gmail.com"
+  495  ssh-keygen -t rsa -b 4096 -C "ygomez297@gmail.com"
+  496  cat ~/.ssh/id_rsa.pub 
+  497  git clone git@github.com:YulianaGomez/streaming.git
+  498  ls
+  499  cd streaming
+  500  ls
+  501  history > history.out
+  502  vi history
+  503  rm history.out 
+  504  history | > history.out
+  505  vi history.out 
+  506  rm history.out 
+  507  history
+  508  history >> history.out
