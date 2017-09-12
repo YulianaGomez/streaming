@@ -30,18 +30,17 @@ def plot_bw():
     x = [line.split('\t')[0] for line in data]
     y = [line.split('\t')[1] for line in data]
     #y = [line.split('')[0] for line in data]
-
     ##matplotlib.pyplot.plot_date(data,time)
     fig = plt.figure()
-
+    newList = [int(num) / (1024*1024) for num in y] 
     ax1 = fig.add_subplot(111)
 
-    ax1.set_title("Bandwidth Utilization: 50GB from Chameleon Bare Metal Node to 4 Cooley Nodes")
+    ax1.set_title("Bandwidth Utilization: 50GB from Chameleon Bare Metal Node to 5 Cooley Node")
     ax1.set_xlabel('Time (s)')
-    plt.xlim(0,30)
-    ax1.set_ylabel('Data Transfer Rate (Bytes/Second)')
+    plt.xlim(0,600)
+    ax1.set_ylabel('Data Transfer Rate (MBs/Second)')
 
-    ax1.plot(x,y, c='r', label='Bandwidth Utilization')
+    ax1.plot(x,newList, c='r', label='Bandwidth Utilization')
 
     leg = ax1.legend()
 
