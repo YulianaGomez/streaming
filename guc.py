@@ -23,13 +23,19 @@ Date Last Modified:   August 24, 2017
 #def ucopy(source,destination,port):
 def ucopy(source, destination, port):
     ips = {}
+    cooley = {}
     with open("cham_ports", 'r') as f:
         for line in f:
             key = line.split()[0]
             value = line.split()[1]
             ips[key] = value
-    #print "this is ip: " + ips[source]
-    os.system(‘globus-url-copy -vb -p 10’ + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ’ ‘ + 'ftp://' + ips[destination] + ':' + port + '/dev/null'  )
+    with open("cooley_ports", 'r') as f:
+        for line in f:
+            key = line.split()[0]
+            value = line.split()[1]
+            cooley[key] = value
+
+    os.system(‘globus-url-copy -vb -p 10’ + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ’ ‘ + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
 
 if __name__ == '__main__':
     #ucopy("yulie1","yulie2",50001)
