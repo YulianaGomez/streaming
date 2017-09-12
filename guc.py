@@ -1,4 +1,3 @@
-import numpy as np
 import os
 import sys
 
@@ -29,17 +28,17 @@ def ucopy(source, destination, port):
             key = line.split()[0]
             value = line.split()[1]
             ips[key] = value
-    with open("cooley_ports", 'r') as f:
-        for line in f:
+    with open("cooley_ports",'r') as c:
+        for line in c:
             key = line.split()[0]
             value = line.split()[1]
             cooley[key] = value
 
-    os.system(‘globus-url-copy -vb -p 10’ + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ’ ‘ + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
+    os.system('globus\-url\-copy \-vb \-p 10' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
 
 if __name__ == '__main__':
     #ucopy("yulie1","yulie2",50001)
     source = sys.argv[1]
-    destination = sys.arv[2]
-    port = sys.arv[3]
+    destination = sys.argv[2]
+    port = sys.argv[3]
     ucopy(source, destination, port)
