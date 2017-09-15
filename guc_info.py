@@ -54,7 +54,7 @@ if __name__ == '__main__':
             else:
                 port = sys.argv[1]
                 userver(port)
-        else:
+        elif len(sys.argv)>2:
             t_end = time.time() + 5
             while time.time() < t_end:
                 subprocess.call(['./getinfo.sh'])
