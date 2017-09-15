@@ -59,5 +59,7 @@ if __name__ == '__main__':
             while time.time() < t_end:
                 subprocess.call(['./getinfo.sh'])
     except OSError, e:
+        print >>sys.stderr, "fork failed: %d (%s)" % (e.errno, e.strerror)
+        sys.exit(1)
          
 
