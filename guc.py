@@ -34,7 +34,7 @@ def ucopy(source, destination, port):
             value = line.split()[1]
             cooley[key] = value
 
-    os.system('globus\-url\-copy \-vb \-p 10' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
+    os.system('globus\-url\-copy \-vb \-p 64 \-cc 16' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
 
 def userver(port):
     os.system('globus\-gridftp\-server -\debug \-aa \-p' + ' ' + port) 
