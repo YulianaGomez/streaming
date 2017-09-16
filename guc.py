@@ -20,7 +20,7 @@ Date Last Modified:   August 24, 2017
 ##============================================================================##
 
 #def ucopy(source,destination,port):
-def ucopy(source, destination, port):
+def ucopy(source, destination, port,p):
     ips = {}
     cooley = {}
     with open("cham_ports", 'r') as f:
@@ -34,7 +34,7 @@ def ucopy(source, destination, port):
             value = line.split()[1]
             cooley[key] = value
 
-    os.system('globus\-url\-copy \-vb \-p 64 \-cc 16' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
+    os.system('globus\-url\-copy \-vb \-p' + ' ' +  p + ' ' + '\-cc 2' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
 
 def userver(port):
     os.system('globus\-gridftp\-server -\debug \-aa \-p' + ' ' + port) 
@@ -45,7 +45,8 @@ if __name__ == '__main__':
         source = sys.argv[1]
         destination = sys.argv[2]
         port = sys.argv[3]
-        ucopy(source, destination, port)
+        p = sys.argv[4]
+        ucopy(source, destination, port,p)
     else:
         port = sys.argv[1]
         userver(port)
