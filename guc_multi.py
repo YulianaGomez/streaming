@@ -20,16 +20,23 @@ Date Last Modified:   September 17, 2017
 ##------------------------------globus_urlcopy---- ---------------------------##
 ##============================================================================##
 
-n_processes = 4 #Number of globus transfer done in parallel - performance limit is VCPUs available
-tran_size= 10 #limit amount that will be transfered. Thiis is in GB
 
-def myfunc(i, p, src, port, dest):
+## INPUT OPTIONS TO LOOP THROUGH:
+min_delay = 120   #wait 2 mins between transfers
+procs_in  = [4]   #Number of globus transfer done in parallel - performance limit is VCPUs available
+size_in   = [1]   #limit amount that will be transfered. Thiis is in GB
+par_in    = [1,4,10] #[1,2,4,6,8,10]   #parallelism settings
+
+
+def myfunc(i, p, src, port, dest, tran_size):
+    local_ti = time.time()
     os.system('globus\-url\-copy \-vb \-len ' + str(tran_size) + 'GB \-p' + ' ' + str(p) + ' ' + '\-cc 1' + ' ' + 'ftp://' + src + ':' + port + '/dev/zero' + ' ' + 'ftp://' + dest + ':' + port + '/dev/null'  )
-
-    print "Process: ", i, "is done"
+    local_tf = time.time()
+    local_tt = local_tf - local_ti
+    print "Process: ", i, "is done in ",local_tt," sec"
 
 #def ucopy(source,destination,port):
-def ucopy(source, destination, port, par):
+def ucopy(source, destination, port, np, tran_size, par):
     ips = {}
     cooley = {}
     with open("cham_ports", 'r') as f:
@@ -42,34 +49,64 @@ def ucopy(source, destination, port, par):
             key = line.split()[0]
             value = line.split()[1]
             cooley[key] = value
-    #n_processes = 4
     myprocs = []
-    for i in range(0, n_processes):
-        p = mp.Process(target=myfunc,args=(i,par,ips[source],port,cooley[destination]))
+    for i in range(0, np):
+        p = mp.Process(target=myfunc,args=(i,par,ips[source],port,cooley[destination],tran_size))
         myprocs.append(p)
         p.start()
-        print " -c -> ",i%mp.cpu_count()," -p ->",p.pid
         os.system("taskset -p -c "+str(i%mp.cpu_count())+" "+str(p.pid)) 
-        #p.start()
-    #os.system('globus\-url\-copy \-vb \-p' + ' ' +  p + ' ' + '\-cc 1' + ' ' + 'ftp://' + ips[source] + ':' + port + '/dev/zero' + ' ' + 'ftp://' + cooley[destination] + ':' + port + '/dev/null'  )
     for p in myprocs: p.join()
     
 def userver(port):              
     os.system('globus\-gridftp\-server -\debug \-aa \-p' + ' ' + port) 
 
 if __name__ == '__main__':
+
+    # Remove send.done and send.exit (if they exist):
+    if os.path.exists('./send.done'):
+        os.system('rm send.done')
+    if os.path.exists('./send.exit'):
+        os.system('rm send.exit')
+
+    time_last = time.time()
+    send_cnt = 0
+
     #ucopy("yulie1","yulie2",50001)
     if len(sys.argv)>2:
         source = sys.argv[1]
         destination = sys.argv[2]
         port = sys.argv[3]
-        p = sys.argv[4]
-        start = time.time()
-        ucopy(source, destination, port,p)
-        etime = time.time()
-        tt = etime - start
-        print "Total time : ", tt
-        print "Transfer Rate Calculated: ", (1000.00*tran_size)/tt, "MB/sec"  
+        # Look for commandline p input if par_in is empty:
+        if par_in == []:
+            p = sys.argv[4]
+            par_in.append(p)
+        # Loop through all options of interest
+        for np in procs_in:
+            for tran_size in size_in:
+                for p in par_in:
+                    while True:
+                        if send_cnt == 0: break
+                        thistime = time.time() 
+                        if thistime - time_last > min_delay: 
+                            time_last = thistime 
+                            break
+                    print "np ", np," size ", tran_size," p ", p
+                    start = time.time()
+                    ucopy(source, destination, port, np, tran_size, p)
+                    etime = time.time()
+                    tt = etime - start
+                    os.system('uptime')
+                    os.system('iostat')
+                    print "Total time : ", tt
+                    # 1GB = 1073741824 B ->
+                    totalbw = (1073.74 * float(tran_size) * float(np)) / float(tt)
+                    print "Transfer Rate Calculated: ", totalbw, "MB/sec" 
+                    os.system('touch send.done')
+                    send_cnt += 1
+        os.system('touch send.exit')
+        print 'Finishing Normally.'
     else:
         port = sys.argv[1]
         userver(port)
+        sys.exit(0)
+
