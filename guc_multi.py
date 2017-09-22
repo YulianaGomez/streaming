@@ -22,10 +22,10 @@ Date Last Modified:   September 17, 2017
 
 
 ## INPUT OPTIONS TO LOOP THROUGH:
-min_delay = 120   #wait 2 mins between transfers
-procs_in  = [4]   #Number of globus transfer done in parallel - performance limit is VCPUs available
-size_in   = [1]   #limit amount that will be transfered. Thiis is in GB
-par_in    = [1,4,10] #[1,2,4,6,8,10]   #parallelism settings
+min_delay = 120 #120   #wait 2 mins between transfers
+procs_in  = [1]   #Number of globus transfer done in parallel - performance limit is VCPUs available
+size_in   = [10]   #limit amount that will be transfered. This is in GB
+par_in    = [1,2,4,6,8,10] #[1,2,4,6,8,10]   #parallelism settings
 
 
 def myfunc(i, p, src, port, dest, tran_size):
@@ -90,17 +90,26 @@ if __name__ == '__main__':
                         if thistime - time_last > min_delay: 
                             time_last = thistime 
                             break
+                    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                     print "np ", np," size ", tran_size," p ", p
+                    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+                    sys.stdout.flush() # FLUSH  
+                    os.system('iostat')
+                    sys.stdout.flush() # FLUSH
                     start = time.time()
                     ucopy(source, destination, port, np, tran_size, p)
                     etime = time.time()
                     tt = etime - start
+                    sys.stdout.flush() # FLUSH
                     os.system('uptime')
+                    sys.stdout.flush() # FLUSH
                     os.system('iostat')
+                    sys.stdout.flush() # FLUSH
                     print "Total time : ", tt
                     # 1GB = 1073741824 B ->
                     totalbw = (1073.74 * float(tran_size) * float(np)) / float(tt)
                     print "Transfer Rate Calculated: ", totalbw, "MB/sec" 
+                    sys.stdout.flush() # FLUSH
                     os.system('touch send.done')
                     send_cnt += 1
         os.system('touch send.exit')

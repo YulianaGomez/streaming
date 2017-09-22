@@ -25,7 +25,7 @@ if officialrun:
 
     cpid = os.fork()
     if cpid == 0:
-        os.system('python guc_multi.py 4vcpu cc050 50001 >transfer.summary 2>&1')
+        os.system('python guc_multi.py 4vcpu cc028 50001 >transfer.summary 2>&1')
         os._exit(0)
 
     # Remove old 'summary.out' if it exists:
@@ -54,6 +54,8 @@ if officialrun:
     os.waitpid(cpid, os.WNOHANG)
 
 # Process transfer.summary:
+print '\n'
+print '\n'
 print 'Processing transfer.summary'
 results = {}
 with open('transfer.summary','r') as f:
@@ -63,6 +65,7 @@ with open('transfer.summary','r') as f:
     np = 0
     tran_size = 0
     par = 0
+    i_io = 0; kbr_i=0; kbw_i=0
     for line in data:
         items = line.split()
         if len(items) > 0 and items[0] == 'np':
@@ -73,13 +76,25 @@ with open('transfer.summary','r') as f:
         elif len(items) > 4 and items[3] == 'MB/sec':
             localbw += float(items[2])
             nlocal += 1
-        elif len(items) > 6 and items[6] == 'average:':
-            cpuload = items[7].split(',')[0]
-            results[(np,tran_size,par)].append(cpuload)
+        elif 'average:' in items:
+            for it in range(len(items)):
+                if items[it] == 'average:':
+                    cpuload = items[it+1].split(',')[0]
+                    results[(np,tran_size,par)].append(cpuload)
+                    break
+            print 'cpuload =',cpuload
         elif len(items) > 5 and items[0] == 'vda':
             kbread = int(items[4])
             kbwrtn = int(items[5])
-            results[(np,tran_size,par)].append(kbread+kbwrtn)
+            if i_io == 0:
+                kbr_i = kbread
+                kbw_i = kbwrtn
+            else:
+                kbread -= kbr_i
+                kbwrtn -= kbw_i
+                results[(np,tran_size,par)].append(kbread+kbwrtn)
+            i_io+=1
+            print 'ioval =',kbread+kbwrtn
         elif len(items) > 3 and items[2] == 'Calculated:':
             globalbw = float(items[3])
             localbw = localbw / float(np)
@@ -90,6 +105,7 @@ with open('transfer.summary','r') as f:
             np = 0
             tran_size = 0
             par = 0
+            i_io = 0; kbr_i=0; kbw_i=0
 
 print 'np,tran_size,par,cpuload,ioval,localbw,globalbw'
 for key, value in results.iteritems():
