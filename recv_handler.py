@@ -6,7 +6,7 @@ we remove it, and then read the CPU load and IO status.
 
 Author: Yuliana Zamora
 Email: yzamora@uchicago.edu
-Last worked on: Sept 17th, 2017
+Last worked on: Sept 22th, 2017
 """
 import os
 import time

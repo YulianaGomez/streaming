@@ -13,7 +13,7 @@ Purpose:             Calling globus urlcopy with specific endpoints
 Author:               Yuliana Zamora
 Email:                yzamora@uchicago.edu
 Date Created:         August 24, 2017
-Date Last Modified:   September 17, 2017
+Date Last Modified:   September 22, 2017
 '''
 #globus-url-copy -vb -p 10 ftp://129.114.33.196:50003/dev/zero ftp://140.221.68.225:50003/dev/null
 ##============================================================================##
