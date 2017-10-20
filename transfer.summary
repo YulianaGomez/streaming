@@ -1,0 +1,133 @@
+np  4  size  1  p  1
+pid 7743's current affinity list: 0-3
+pid 7743's new affinity list: 0
+pid 7748's current affinity list: 0-3
+pid 7748's new affinity list: 1
+pid 7753's current affinity list: 0-3
+pid 7753's new affinity list: 2
+pid 7758's current affinity list: 0-3
+pid 7758's new affinity list: 3
+Source: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    113246208 bytes        21.60 MB/sec avg        21.60 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    110624768 bytes        21.10 MB/sec avg        21.10 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    110362624 bytes        21.05 MB/sec avg        21.05 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    113246208 bytes        21.60 MB/sec avg        21.60 MB/sec inst    247988224 bytes        23.65 MB/sec avg        25.70 MB/sec inst    243531776 bytes        23.23 MB/sec avg        25.35 MB/sec inst    243793920 bytes        23.25 MB/sec avg        25.45 MB/sec inst    247726080 bytes        23.62 MB/sec avg        25.65 MB/sec inst    392953856 bytes        24.98 MB/sec avg        27.65 MB/sec inst    386400256 bytes        24.57 MB/sec avg        27.20 MB/sec inst    392429568 bytes        24.95 MB/sec avg        27.60 MB/sec inst    386138112 bytes        24.55 MB/sec avg        27.20 MB/sec inst    606863360 bytes        28.94 MB/sec avg        40.90 MB/sec inst    606339072 bytes        28.91 MB/sec avg        40.70 MB/sec inst    598736896 bytes        28.55 MB/sec avg        40.50 MB/sec inst    599785472 bytes        28.60 MB/sec avg        40.75 MB/sec inst    874250240 bytes        33.35 MB/sec avg        51.10 MB/sec inst    855375872 bytes        32.63 MB/sec avg        48.75 MB/sec inst    841744384 bytes        32.11 MB/sec avg        44.80 MB/sec inst    857997312 bytes        32.73 MB/sec avg        49.45 MB/sec inst   1073741824 bytes        34.95 MB/sec avg        44.24 MB/sec inst
+Process:  0 is done in  29.7902519703  sec
+   1073741824 bytes        34.36 MB/sec avg        42.86 MB/sec inst
+Process:  3 is done in  30.2521669865  sec
+   1005060096 bytes        31.95 MB/sec avg        31.15 MB/sec inst   1036779520 bytes        32.96 MB/sec avg        34.60 MB/sec inst   1073741824 bytes        33.03 MB/sec avg        35.25 MB/sec inst
+Process:  2 is done in  31.4507601261  sec
+   1073741824 bytes        31.90 MB/sec avg        31.19 MB/sec inst
+Process:  1 is done in  32.5171728134  sec
+ 06:34:24 up  7:04,  2 users,  load average: 0.15, 0.20, 0.17
+Linux 4.4.0-57-generic (yuile-tb4vc) 	09/18/2017 	_x86_64_	(4 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.97    0.00    0.48    0.57    0.00   97.98
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+vda               1.19        12.05        14.62     306604     372092
+
+Total time :  32.5223860741
+Transfer Rate Calculated:  132.061651018 MB/sec
+np  4  size  1  p  4
+pid 7810's current affinity list: 0-3
+pid 7810's new affinity list: 0
+pid 7815's current affinity list: 0-3
+pid 7815's new affinity list: 1
+pid 7819's current affinity list: 0-3
+pid 7819's new affinity list: 2
+pid 7825's current affinity list: 0-3
+pid 7825's new affinity list: 3
+Source: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    570163200 bytes       108.75 MB/sec avg       108.75 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    145489920 bytes        27.75 MB/sec avg        27.75 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    100925440 bytes        19.25 MB/sec avg        19.25 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    196608000 bytes        37.50 MB/sec avg        37.50 MB/sec inst   1073741824 bytes       113.78 MB/sec avg       120.06 MB/sec inst
+Process:  0 is done in  9.43882799149  sec
+    453771264 bytes        43.28 MB/sec avg        49.05 MB/sec inst    363593728 bytes        34.67 MB/sec avg        41.60 MB/sec inst    273154048 bytes        26.05 MB/sec avg        32.85 MB/sec inst    634912768 bytes        40.37 MB/sec avg        51.75 MB/sec inst    779091968 bytes        49.53 MB/sec avg        62.05 MB/sec inst    509345792 bytes        32.38 MB/sec avg        45.05 MB/sec inst   1073741824 bytes        53.06 MB/sec avg        65.35 MB/sec inst
+Process:  1 is done in  19.7758119106  sec
+    903872512 bytes        43.10 MB/sec avg        51.30 MB/sec inst    776732672 bytes        37.04 MB/sec avg        51.00 MB/sec inst   1073741824 bytes        44.52 MB/sec avg        54.00 MB/sec inst
+Process:  2 is done in  23.4994020462  sec
+   1073741824 bytes        41.12 MB/sec avg        57.81 MB/sec inst
+Process:  3 is done in  25.3210830688  sec
+ 06:36:17 up  7:06,  2 users,  load average: 0.48, 0.36, 0.24
+Linux 4.4.0-57-generic (yuile-tb4vc) 	09/18/2017 	_x86_64_	(4 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1.06    0.00    0.48    0.56    0.00   97.90
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+vda               1.18        12.00        14.57     306604     372448
+
+Total time :  25.33694911
+Transfer Rate Calculated:  169.513700381 MB/sec
+np  4  size  1  p  10
+pid 7865's current affinity list: 0-3
+pid 7865's new affinity list: 0
+pid 7870's current affinity list: 0-3
+pid 7870's new affinity list: 1
+pid 7874's current affinity list: 0-3
+pid 7874's new affinity list: 2
+pid 7880's current affinity list: 0-3
+pid 7880's new affinity list: 3
+Source: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    664535040 bytes       126.75 MB/sec avg       126.75 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    320339968 bytes        61.10 MB/sec avg        61.10 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    315097088 bytes        60.10 MB/sec avg        60.10 MB/sec instSource: ftp://129.114.33.55:50001/dev/
+Dest:   ftp://140.221.68.158:50001/dev/
+  zero  ->  null
+
+    300417024 bytes        57.30 MB/sec avg        57.30 MB/sec inst   1062731776 bytes       101.35 MB/sec avg        75.95 MB/sec inst    621805568 bytes        59.30 MB/sec avg        57.50 MB/sec inst    530055168 bytes        50.55 MB/sec avg        41.00 MB/sec inst    589824000 bytes        56.25 MB/sec avg        55.20 MB/sec inst   1073741824 bytes        96.60 MB/sec avg        17.50 MB/sec inst
+Process:  2 is done in  11.0545480251  sec
+   1024196608 bytes        65.12 MB/sec avg        76.75 MB/sec inst    832831488 bytes        52.95 MB/sec avg        57.75 MB/sec inst    958398464 bytes        60.93 MB/sec avg        70.30 MB/sec inst   1073741824 bytes        64.00 MB/sec avg        47.25 MB/sec inst
+Process:  0 is done in  16.4652950764  sec
+   1073741824 bytes        61.69 MB/sec avg        68.75 MB/sec inst
+Process:  3 is done in  17.0428538322  sec
+   1073741824 bytes        56.26 MB/sec avg        71.80 MB/sec inst
+Process:  1 is done in  18.6962859631  sec
+ 06:38:10 up  7:07,  2 users,  load average: 0.70, 0.51, 0.31
+Linux 4.4.0-57-generic (yuile-tb4vc) 	09/18/2017 	_x86_64_	(4 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1.14    0.00    0.48    0.56    0.00   97.81
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+vda               1.18        11.94        14.52     306604     372804
+
+Total time :  18.7031078339
+Transfer Rate Calculated:  229.638840676 MB/sec
+Finishing Normally.
