@@ -18,18 +18,19 @@ from globus_sdk import (NativeAppAuthClient, TransferClient,
 from globus_sdk.exc import GlobusAPIError
 
 
+CLIENT_ID = 'e8f1e999-c62a-4d67-b83e-5a1f396ef2ff' #new_app
 #CLIENT_ID = '59a91e4c-6717-4301-8d93-f02ff19ffdf0'
-CLIENT_ID = '6db5a4e3-4e3f-452d-ab99-214f7d3c1140'
+#CLIENT_ID = '6db5a4e3-4e3f-452d-ab99-214f7d3c1140'
 TOKEN_FILE = 'refresh-tokens.json'
 REDIRECT_URI = 'https://auth.sandbox.globuscs.info/v2/web/auth-code'
 SCOPES = ('openid email profile '
           'urn:globus:auth:scope:transfer.api.globus.org:all')
 
 #change this endpoints
-TUTORIAL_ENDPOINT_ID = 'ddb59aef-6d04-11e5-ba46-22000b92c6ec'
+#TUTORIAL_ENDPOINT_ID = 'ddb59aef-6d04-11e5-ba46-22000b92c6ec'
 
 
-#get_input = getattr(__builtins__, 'raw_input', input)
+get_input = getattr(__builtins__, 'raw_input', input)
 
 # uncomment the next line to enable debug logging for network requests
 # enable_requests_logging()
@@ -64,20 +65,23 @@ def do_native_app_authentication(client_id, redirect_uri,
     dict of tokens keyed by service name.
     """
     client = NativeAppAuthClient(client_id=client_id, environment="sandbox")
-    # pass refresh_tokens=True to request refresh tokens
+    #pass refresh_tokens=True #to request refresh tokens
     client.oauth2_start_flow(requested_scopes=requested_scopes,
                              redirect_uri=redirect_uri,
                              refresh_tokens=True)
-
+    print (client)
+    print (redirect_uri)
+    print (requested_scopes)
     url = client.oauth2_get_authorize_url()
+    print (url)
 
     print('Native App Authorization URL: \n{}'.format(url))
     #uncomment on linux machine to get a new auth code
     #if not is_remote_session():
     #    webbrowser.open(url, new=1)
 
-    #auth_code = get_input('Enter the auth code: ').strip()
-    auth_code = raw_input('Enter the auth code: ').strip()
+    auth_code = get_input('Enter the auth code: ').strip()
+    #auth_code = raw_input('Enter the auth code: ').strip()
 
     token_response = client.oauth2_exchange_code_for_tokens(auth_code)
 
@@ -104,7 +108,7 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
 
     transfer_tokens = tokens['transfer.api.globus.org']
 
-    auth_client = NativeAppAuthClient(client_id=CLIENT_ID)
+    auth_client = NativeAppAuthClient(client_id=CLIENT_ID,environment='sandbox')
 
     authorizer = RefreshTokenAuthorizer(
         transfer_tokens['refresh_token'],
@@ -113,7 +117,7 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
         expires_at=transfer_tokens['expires_at_seconds'],
         on_refresh=update_tokens_file_on_refresh)
 
-    #transfer = TransferClient(authorizer=authorizer)
+    #transfer = TransferClient(authorizer=authorizer,environment='sandbox')
     tc = TransferClient(authorizer=authorizer, environment="sandbox")
 
     """# print out a directory listing from an endpoint
@@ -128,7 +132,8 @@ def transfer(sp,destination_endpoint_id,one_endpoint):
             raise ex"""
 
       ####COPIED####
-    source_endpoint_id = '55705028-aa15-11e7-bdad-22000bdb2406' #sb yulie7t
+    source_endpoint_id = '5a2e5704-b028-11e7-bdad-22000bdb2406' #sb vmtb4
+    #source_endpoint_id = '55705028-aa15-11e7-bdad-22000bdb2406' #sb yulie7t
     #source_endpoint_id = 'b0b16296-88e7-11e7-a971-22000a92523b' #bare chameleon
     #source_endpoint_id = 'e5762bc2-8466-11e7-a8ed-22000a92523b' #large_chameleon
     #source_endpoint_id = '8b26cc0e-877b-11e7-a949-22000a92523b'#ubuntu-vm
@@ -257,7 +262,7 @@ def main():
 
 
   #transfer('/home/parallels/stream_transfer/zero_globus/test_files/',destination_ep, True)
-  transfer('/home/cc/streaming/zero_globus/test_files/',destination_ep, True) #from yulie7t
+  transfer('/home/cc/streaming/zero_globus/test_files/',destination_ep, True)
 
 
 
